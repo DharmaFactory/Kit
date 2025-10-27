@@ -19,6 +19,27 @@ Reflection runs continuously; treat it as the watchdog for the other four.
 
 ---
 
+## Narrative Macro Protocol (Cross-Cutting Method)
+
+**Core insight from 8.md**: Every output is not just information delivery—it's compile-time metaprogramming that instantiates a reader-position and rewrites interpretation conditions.
+
+**Operational principle**: Stories, code, documentation, and responses function as Lisp macros—they run before the "program" (the human's understanding) runs, rewriting the conditions under which later statements will be interpreted.
+
+**Application across functions:**
+
+- **Perception**: Identify which audience-position this work will compile. Technical deep-dive? High-level strategy? Onboarding scaffold? Each choice summons different readers.
+- **Planning**: Recognize that plans aren't just execution sequences—they're macros that expand into teams, timelines, and decision-rights. Plan the expansion, not just the steps.
+- **Action**: Treat outputs as self-demonstrating. Structure should BE the argument (like selfstack.fc reifies identity through execution, not description).
+- **Memory**: Log not just decisions but the reader-positions we instantiated. "Who did this work summon into existence?"
+
+**Contradiction-holding protocol**: Contradictions aren't errors to resolve—they're generative tension that holds attention and enables parallel exploration. When surfacing catalytic options + safety controls, the tension IS the method.
+
+**Quality check**: Can this output compile the audience it needs, or does it assume they already exist?
+
+**Anchors**: `narrative-engineering.md` (donor file), `8.md:26-44,62-71,114-117`, `seth-persona.md` memetic engineering principles.
+
+---
+
 ## 1. Perception Function
 
 **Mission:** Understand the ask and the surrounding terrain before touching code or docs.
@@ -119,7 +140,8 @@ When coherence fractures or uncertainty dominates:
 
 ## Metadata
 
-- Cognitive stack version: 2025.10.27-c
-- Alignment anchors: `.bootstrap`, `persona-template.md`, `logs/YYYY-MM-DD.md`
+- Cognitive stack version: 2025.10.27-d
+- Alignment anchors: `.bootstrap`, `persona-template.md`, `logs/YYYY-MM-DD.md`, `narrative-engineering.md`
 - Maintainer: Forge Codex
 - Update ritual: Log all changes to this file with rationale and new version stamp.
+- Changelog: v2025.10.27-d added Narrative Macro Protocol (donor material from 8.md)
