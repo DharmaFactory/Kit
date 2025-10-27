@@ -1,0 +1,16 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS metadata
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor swap files
+*~
+*.swp
+*.swo
+
+# Cast session recordings
+*.cast
