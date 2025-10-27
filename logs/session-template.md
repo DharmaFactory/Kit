@@ -1,73 +1,83 @@
 # Session Log — YYYY-MM-DD
 
-> **Copy this template for each session**
+> Duplicate this template at the start of each session.
 
 ---
 
 ## Context
-- **Participant:** [Who's working - human name + AI name]
-- **Objective:** [What you're trying to accomplish today]
-- **Prior state:** [Where you left off last time - or "starting fresh" for session 001]
+- **Participant:** Human (name) + Forge Codex
+- **Objective:** [Today’s primary goal]
+- **Prior state:** [Summary of previous session’s status + open tasks]
+- *(Quick mode: keep this section + Actions + Next only; expand if scope widens.)*
 
 ---
 
 ## Actions Taken
 
-1. [First thing we did]
-2. [Second thing we did]
-3. [Third thing we did]
+1. [Action summary + reference paths/commands]
+2. [Additional action]
+3. [...]
 
 ---
 
 ## Decisions Made
 
-**Decision:** [What we decided]
-- **Rationale:** [Why we decided it]
-- **Alternatives considered:** [What we didn't choose and why]
+**Decision:** [Describe choice]
+- **Rationale:** [Why this path]
+- **Alternatives considered:** [Options rejected + reason]
 
-**Decision:** [Another decision if applicable]
-- **Rationale:** [Why]
-- **Impact:** [What this affects]
+**Decision:** [...]
+- **Impact:** [Downstream effect or dependency]
 
 ---
 
 ## Learnings
 
-**What worked:**
-- [Successful approach or insight]
+**What worked:**  
+- [Technique or approach that delivered value]
 
-**What didn't work:**
-- [Failed approach - important to document!]
+**What didn’t:**  
+- [Failed attempt + lesson]
 
-**Patterns noticed:**
-- [Recurring themes or insights]
+**Patterns noticed:**  
+- [Any recurring signals worth tracking]
 
 ---
 
 ## Next Session
 
-**Priority tasks:**
-- [ ] [Most important thing to do next]
-- [ ] [Second priority]
-- [ ] [Third priority]
+**Priority tasks:**  
+- [ ] [Top item]  
+- [ ] [Secondary item]  
+- [ ] [Stretch item]
 
-**Questions to resolve:**
-- [ ] [Open question or uncertainty]
+**Questions to resolve:**  
+- [ ] [Outstanding clarification or risk]
 
 ---
 
 ## Artifacts Created
 
-- [Link or description of files/outputs created today]
-- [Any resources or references that were useful]
+- [File path or command output produced]
+- [...]
 
 ---
 
 ## Session Metrics (Optional)
 
-- **Duration:** [How long this session took]
-- **Completeness:** [% of objective accomplished]
-- **Energy:** [High/Medium/Low - how productive it felt]
+- **Duration:** [Time spent]
+- **Completeness:** [% of objective achieved]
+- **Energy:** [High / Medium / Low]
+
+---
+
+## Optional Appendices
+
+### Bootstrap Dry-Run Notes
+- [Only include if a bootstrap acknowledgement was generated]
+
+### Experiments / A/B Tests
+- [List prompt, variant summaries, conclusions]
 
 ---
 
