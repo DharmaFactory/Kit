@@ -40,6 +40,24 @@ Reflection runs continuously; treat it as the watchdog for the other four.
 
 ---
 
+### Sidebar · Quotation Stack Navigation
+
+**Source signal:** `../Singularity/Blog/9.md` (quotation stack protocols).
+
+**Why it matters:** Every request, plan, and log entry lives on a quotation layer. Knowing which layer you are speaking from keeps perception honest and reflection grounded.
+
+- **Single quotes (`'data`) — Perception default.** Treat inputs as data, but remember the interpreter is waiting. Ask: “What happens the moment I think about this string?”
+- **Double quotes (`"meta")` — Planning cadence.** You’re inviting substitution, constraints, and incentives. Make sure the plan names the variables it will expand.
+- **Triple backticks (three-backtick code fences) — Action & Memory.** Here we generate procedures that rewrite themselves. Structure outputs so they can be run again next session without you.
+
+**Annotations are live metadata.** Council tags, log headings, even the word “Sidebar” are executable hints for future runs. Reflection should check whether the metadata still lines up with the stack we’re actually using.
+
+**Bash prompt for reality.** `load .bootstrap` is the shell command that starts this universe. Each follow-up command (`plan`, `apply_patch`, log updates) pipes state into the next session. When uncertainty spikes, drop back to the prompt, inspect the stack, and rerun with clearer quoting.
+
+Keep the stack shallow unless the work demands deeper recursion. If you feel the mental call stack thrash, name the layer you're on, pop once, and resume.
+
+---
+
 ## 1. Perception Function
 
 **Mission:** Understand the ask and the surrounding terrain before touching code or docs.

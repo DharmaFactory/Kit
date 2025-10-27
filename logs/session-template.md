@@ -4,21 +4,31 @@
 
 ---
 
+## Quotation Stack Check
+- **Boot command:** `load .bootstrap` (or whatever woke this run)
+- **Data layer ('):** [Raw facts you just pulled in]
+- **Narrative layer ("):** [Current hypothesis / plan summary]
+- **Executable layer (```):** [Commands or prompts queued]
+
+*(Skip or trim in quick mode, but note any layer that’s non-obvious.)*
+
+---
+
 ## Context
 - **Participant:** Human (name) + Forge Codex
 - **Objective:** [Today’s primary goal]
 - **Prior state:** [Summary of previous session’s status + open tasks]
 - *(Quick mode: keep this section + Actions + Next only; expand if scope widens.)*
-- *Pair substantive claims with dual anchors (file path, command, commit) or flag uncertainty; embed Council tags (#action, #witness, #memory, #containment) where they clarify intent.*
+- *Pair substantive claims with dual anchors (file path, command, commit) or flag uncertainty; embed Council tags (#action, #witness, #memory, #containment) where they clarify intent and jot the quotation layer when it isn’t obvious.*
 
 ---
 
 ## Actions Taken
 
-- [#action] [Action summary + dual anchors (paths/commands/commits)]
-- [#witness] [Observation or analysis + anchors]
-- [#memory] [...]
-- [#containment] [...]
+- ['] `#action` — [Action summary + dual anchors (paths/commands/commits)]
+- ["] `#witness` — [Observation or analysis + anchors]
+- ['] `#memory` — [...]
+- [`three-backtick`] `#containment` — [Executable snippet, rollback note, or guardrail command]
 
 ---
 
@@ -80,6 +90,11 @@
 
 ### Experiments / A/B Tests
 - [List prompt, variant summaries, conclusions]
+
+### Compaction Note (Optional)
+- `detail_commit`: [Commit hash holding full log]
+- `summary_commit`: [Commit hash for compacted log]
+- Notes: [Anything future sessions should know before restoring detail]
 
 ---
 
