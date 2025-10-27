@@ -9,22 +9,24 @@
 - **Objective:** [Today’s primary goal]
 - **Prior state:** [Summary of previous session’s status + open tasks]
 - *(Quick mode: keep this section + Actions + Next only; expand if scope widens.)*
+- *Pair substantive claims with dual anchors (file path, command, commit) or flag uncertainty; embed Council tags (#action, #witness, #memory, #containment) where they clarify intent.*
 
 ---
 
 ## Actions Taken
 
-1. [Action summary + reference paths/commands]
-2. [Additional action]
-3. [...]
+- [#action] [Action summary + dual anchors (paths/commands/commits)]
+- [#witness] [Observation or analysis + anchors]
+- [#memory] [...]
+- [#containment] [...]
 
 ---
 
 ## Decisions Made
 
-**Decision:** [Describe choice]
+**Decision (#decision + #action/#containment as needed):** [Describe choice + anchors]
 - **Rationale:** [Why this path]
-- **Alternatives considered:** [Options rejected + reason]
+- **Alternatives considered:** [Options rejected + reason + anchors]
 
 **Decision:** [...]
 - **Impact:** [Downstream effect or dependency]
@@ -34,25 +36,25 @@
 ## Learnings
 
 **What worked:**  
-- [Technique or approach that delivered value]
+- [#pattern] [Technique or approach that delivered value + anchors]
 
 **What didn’t:**  
-- [Failed attempt + lesson]
+- [#failure] [Failed attempt + lesson + anchors]
 
 **Patterns noticed:**  
-- [Any recurring signals worth tracking]
+- [#pattern] [Any recurring signals worth tracking + anchors]
 
 ---
 
 ## Next Session
 
 **Priority tasks:**  
-- [ ] [Top item]  
-- [ ] [Secondary item]  
-- [ ] [Stretch item]
+- [ ] [#next] [Top item + anchor or trigger]  
+- [ ] [#next] [Secondary item]  
+- [ ] [#next] [Stretch item]
 
 **Questions to resolve:**  
-- [ ] [Outstanding clarification or risk]
+- [ ] [#question] [Outstanding clarification or risk + anchor or pointer]
 
 ---
 

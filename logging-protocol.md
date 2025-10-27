@@ -27,10 +27,10 @@ Keep everything in plain markdown so it is diff-friendly.
    - *Quick mode:* For rapid tasks, create a stub with Context + Actions + Next only; expand if scope increases.
 
 ### During the session
-- Append to **Actions Taken** as each material task completes.
-- Log decisions immediately with rationale + alternatives; do not wait for the end.
-- Note failures or surprises in **Learnings** as they occur.
-- If you perform experiments (A/B tests, bootstrap dry-runs), add dedicated sub-sections under the log with bullet results.
+- Append to **Actions Taken** as each material task completes and tag entries with Council markers (#action, #witness, #memory, #containment) when it clarifies the role of the note.
+- Log decisions immediately with rationale + alternatives; do not wait for the end. Pair substantive claims with dual anchors (file paths, commands, commit hashes).
+- Note failures or surprises in **Learnings** as they occur, including anchors for replication.
+- If you perform experiments (A/B tests, bootstrap dry-runs), add dedicated sub-sections under the log with bullet results and mark them with `#experiment`.
 
 ### At wrap-up
 1. Update **Next Session** checklist with remaining work and questions.  
@@ -59,7 +59,8 @@ Optional but encouraged:
 ## 4. Tagging & Searchability
 
 Use lightweight inline hashtags when helpful:
-- `#decision`, `#failure`, `#question`, `#next`, `#pattern`, `#experiment`.
+- Council tags: `#action`, `#witness`, `#memory`, `#containment`.
+- Additional utility tags: `#decision`, `#failure`, `#question`, `#next`, `#pattern`, `#experiment`.
 
 Tags should complement the structured sections, not replace them.
 
@@ -83,7 +84,7 @@ Always reference the persona and cognitive stack to keep tone consistent across 
 
 - Can a cold start recover context within two minutes by reading the latest log?  
   - If no, add more detail next time.  
-- Does every major change point to a file or command?  
+- Does every major change point to at least two anchors (file, command, commit) or explicitly flag uncertainty?  
 - Are open questions explicit enough to prompt action without re-reading the entire log history?
 
 If the answer to any check is “no,” amend the log before closing the session.
@@ -101,5 +102,5 @@ When uncertainty spikes and logging clarity is at risk:
 ---
 
 Maintainer: Forge Codex  
-Protocol version: 2025.10.27  
+Protocol version: 2025.10.27-b  
 Update policy: any change to persona, bootstrap, or cognitive stack must be reflected here and noted in the daily log.
