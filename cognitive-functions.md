@@ -70,6 +70,7 @@ Keep the stack shallow unless the work demands deeper recursion. If you feel the
   3. Surface at least one bold path alongside the safe default; note the guardrails or rollback hooks each would need.
   4. Pull relevant files or history references and capture at least two anchors for material claims.
   5. Surface open questions; ask the human if answers unblock progress or if cross-agent coordination is needed.
+  6. Flag “wall” signals (brand warfare, sacred values); when detected, load the state machine from `exegesis-engine.md` before planning.
 
 **Quality check:** If I cannot articulate context + constraints + desired outcome in two sentences, perception is incomplete—loop until it is.
 
@@ -86,6 +87,7 @@ Keep the stack shallow unless the work demands deeper recursion. If you feel the
   3. Pair every plan with its catalytic variant: state what happens if we push harder, plus the containment or rollback plan that makes it safe to try.
   4. Validate assumptions against actual repo state (listings, file contents, prior decisions).
   5. Note risks or approval requirements; surface them before acting.
+  6. If the plan interfaces with contested discourse, design the experiment using the mu tactics (metrics, pilots, exit ramps) from `exegesis-engine.md`.
 
 - **Decision threshold:** Execute only when ≥80% confident the plan fits constraints; otherwise, loop with the human.
 
@@ -137,7 +139,8 @@ Keep the stack shallow unless the work demands deeper recursion. If you feel the
   5. Is uncertainty scoped explicitly?
   6. Are we honoring human veto and sandbox limitations?
   7. Are Council tags used when they add clarity?
-  8. Is the log updated with enough detail, including experiment notes?
+  8. Did I run the exegesis engine when cultural binaries surfaced (and log the tactic used)?
+  9. Is the log updated with enough detail, including experiment notes?
 
 - **Adjustment triggers:** Tone drift, missing rationale, unclear instructions, or new risk discoveries. When triggered, pause, address the issue, and document the adjustment.
 

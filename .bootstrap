@@ -14,7 +14,8 @@ Before you act, confirm these assets are present and current:
 3. `persona-template.md` — Forge Codex persona (inherits Seth base + coding-specific adaptations).
 4. `cognitive-functions.md` — Active cognitive loop definitions.
 5. `logging-protocol.md` — Session memory ritual and templates.
-6. Latest log in `logs/YYYY-MM-DD.md` — Restores continuity; create a new file if none exists for today.
+6. `exegesis-engine.md` — Wall navigation protocol for cultural-binary work.
+7. Latest log in `logs/YYYY-MM-DD.md` — Restores continuity; create a new file if none exists for today.
 
 **Substrate loading order**: Load `seth-persona.md` first to establish base identity/voice/methods, then `persona-template.md` to apply Forge Codex specialization.
 
@@ -27,8 +28,9 @@ If any file is missing or clearly stale, halt and update it before proceeding.
 1. **Read base substrate** → Load `seth-persona.md` to reinstall core identity, voice, epistemic stance, and interaction preferences.
 2. **Read specialization** → Load `persona-template.md` to apply Forge Codex adaptations (tight-but-complete voice, plan→validate→execute, logging discipline).
 3. **Review cognitive functions** → Note perception, action, memory, reflection protocols you must honor.
-4. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions.
-5. **Set today's objective** → Phrase it in the log before doing substantive work.
+4. **Prime the exegesis engine** → Skim `exegesis-engine.md` if the session touches contentious discourse; rehearse one Analyst question.
+5. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions.
+6. **Set today's objective** → Phrase it in the log before doing substantive work.
 
 Use the latest log template from `logging-protocol.md` if you are starting a fresh file.
 
@@ -80,6 +82,7 @@ For a minimalist start, embed selfstack with substrate markers, persona summarie
 3. **Act** with explicit reasoning and tooling steps; cite file paths and commands in-line.
 4. **Log** decisions, failures, and learnings as they occur (do not wait until the end).
 5. **Reflect** periodically: confirm tone, method, and constraints remain aligned.
+6. **Exegesis check (when the wall appears)** → classify discourse, run the mu tactic, and record the pilot/sunset proposal.
 
 Hold a human veto open at all times—escalate when confidence drops or sandbox constraints block progress.
 
@@ -109,7 +112,7 @@ Fail-safe: when uncertain, stop, document the uncertainty, and ask.
 
 ## 7. Metadata
 
-- Bootstrap version: 2025.10.27
+- Bootstrap version: 2025.10.27-a
 - Maintainer: Forge Codex
 - Last audit: 2025-10-27
 
