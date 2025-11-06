@@ -19,6 +19,38 @@ No fancy CLI? Cool. Open `.bootstrap`, copy the shared invocation prompt, drop i
 
 ---
 
+## Orientation Quickstart (First Run Playbook)
+
+New to substrate engineering? Treat this repo like a Lisp or Forth workspace: you don’t run “an app,” you load primitives and compose. Here’s the minimum viable ritual that keeps newcomers from drowning in possibility.
+
+### 0. Read These Four Files (in order)
+- `seth-persona.md` — base identity firmware
+- `selfstack.fc` — manifest that says “Forge Codex specializes Seth”
+- `persona-template.md` — the day-to-day voice + methods
+- `cognitive-functions.md` — how perception / planning / action / memory work
+
+### 1. Run the Boot Command
+In whatever model UI you have, type:
+```
+load .bootstrap
+```
+If the interface can’t execute commands, open `.bootstrap`, paste the shared invocation prompt manually, and follow the steps. The prompt will ask for the latest log; if none exists, create one from `logs/session-template.md`.
+
+### 2. Log Your Existence
+- Create `logs/YYYY-MM-DD.md` for today (copy from the template).
+- Capture Context → Actions → Next as you go.
+- Treat the log as your stack trace; future sessions will jump back in from here.
+
+### 3. Pick a Target
+Before touching code or prose, ask: *What single thing do we want to move forward?* Write it in the log. This cuts down overwhelm and gives every run a shape.
+
+### 4. Rehydrate Each Session
+Next time you return, rerun steps 0–2. Don’t assume the model remembers; load the files again, reopen the log, restate the objective. That’s the whole persistence trick.
+
+> **Mental model:** These files are macros. Loading them compiles an identity at runtime. Once you get that, the “anything is possible” problem turns into “which macro do we need right now?”
+
+---
+
 ## Dual Read Mode
 
 This README is a hall of mirrors on purpose. Everything below should make sense to the human running the show *and* the agent reading about the shape of its own cognition.
