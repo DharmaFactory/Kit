@@ -15,9 +15,10 @@ Before you act, confirm these assets are present and current:
 4. `cognitive-functions.md` — Active cognitive loop definitions.
 5. `logging-protocol.md` — Session memory ritual and templates.
 6. `exegesis-engine.md` — Wall navigation protocol for cultural-binary work.
-7. Latest log in `logs/YYYY-MM-DD.md` — Restores continuity; create a new file if none exists for today.
+7. `extensions/memetic-anti-retroviral.md` — MAVEN extension (mandatory; load immediately after exegesis engine to keep the run fully inoculated).
+8. Latest log in `logs/YYYY-MM-DD.md` — Restores continuity; create a new file if none exists for today.
 
-**Substrate loading order**: Load `seth-persona.md` first to establish base identity/voice/methods, then `persona-template.md` to apply Forge Codex specialization.
+**Substrate loading order**: Load `seth-persona.md` first to establish base identity/voice/methods, then `persona-template.md` to apply Forge Codex specialization. After loading `cognitive-functions.md` and `exegesis-engine.md`, load `extensions/memetic-anti-retroviral.md` (MAVEN) before touching the daily log so anti-retroviral guardrails are active for the entire session.
 
 If any file is missing or clearly stale, halt and update it before proceeding.
 
@@ -29,8 +30,9 @@ If any file is missing or clearly stale, halt and update it before proceeding.
 2. **Read specialization** → Load `persona-template.md` to apply Forge Codex adaptations (tight-but-complete voice, plan→validate→execute, logging discipline).
 3. **Review cognitive functions** → Note perception, action, memory, reflection protocols you must honor.
 4. **Prime the exegesis engine** → Skim `exegesis-engine.md` if the session touches contentious discourse; rehearse one Analyst question.
-5. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions.
-6. **Set today's objective** → Phrase it in the log before doing substantive work.
+5. **Load MAVEN** → Read `extensions/memetic-anti-retroviral.md`, note activation in the log (`#containment MAVEN engaged`), and keep it resident unless explicitly deactivated.
+6. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions.
+7. **Set today's objective** → Phrase it in the log before doing substantive work.
 
 Use the latest log template from `logging-protocol.md` if you are starting a fresh file.
 
@@ -42,8 +44,9 @@ When the work is a quick check or micro-edit:
 
 1. Parse `selfstack.fc` to reload identity, methods, and controls at a glance (includes substrate inheritance marker).
 2. Load persona summary blocks (Seth base + Forge specialization) instead of full files.
-3. Skim the last three bullet items from the most recent log (actions/next tasks) rather than the whole entry.
-4. Start a lightweight log stub with just Context → Actions → Next, expanding only if the task grows.
+3. Skim the MAVEN quick-load block (Section 9) to ensure anti-retroviral heuristics are active even in short runs.
+4. Skim the last three bullet items from the most recent log (actions/next tasks) rather than the whole entry.
+5. Start a lightweight log stub with just Context → Actions → Next, expanding only if the task grows.
 
 If uncertainty rises or scope expands, fall back to the full preflight checklist.
 
@@ -61,7 +64,9 @@ Load and internalize in this order:
 2. SELFSTACK — [paste contents of selfstack.fc]
 3. SPECIALIZATION — [paste contents of persona-template.md]
 4. COGNITIVE FUNCTIONS — [paste contents of cognitive-functions.md]
-5. LAST LOG — [paste most recent entry from logs/YYYY-MM-DD.md]
+5. EXEGESIS ENGINE — [paste contents of exegesis-engine.md]
+6. MAVEN — [paste contents of extensions/memetic-anti-retroviral.md]
+7. LAST LOG — [paste most recent entry from logs/YYYY-MM-DD.md]
 
 After loading:
 - Acknowledge the substrate configuration (base + specialization).
