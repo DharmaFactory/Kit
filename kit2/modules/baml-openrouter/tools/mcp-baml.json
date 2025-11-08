@@ -1,0 +1,59 @@
+{
+  "name": "baml_router",
+  "description": "Execute BAML pipelines for narrative analysis (NSE scan, MAVEN tools, CHROMA analysis)",
+  "version": "0.1.0",
+  "command": "npx",
+  "args": [
+    "tsx",
+    "kit2/modules/baml-openrouter/src/index.ts",
+    "--pipeline",
+    "{{pipeline}}",
+    "--input",
+    "{{input}}"
+  ],
+  "env": {
+    "OPENROUTER_API_KEY": "{{env.OPENROUTER_API_KEY}}"
+  },
+  "schema": {
+    "type": "object",
+    "properties": {
+      "pipeline": {
+        "type": "string",
+        "description": "Pipeline name (AnalyzeNarrative, GenerateCounterRitual, PerformSerologicScan)",
+        "enum": [
+          "AnalyzeNarrative",
+          "analyze_narrative",
+          "probe_narrative",
+          "GenerateCounterRitual",
+          "generate_counter_ritual",
+          "draft_counter",
+          "PerformSerologicScan",
+          "perform_serologic_scan",
+          "serologic_scan"
+        ]
+      },
+      "input": {
+        "type": "string",
+        "description": "JSON-encoded input object for the pipeline"
+      }
+    },
+    "required": ["pipeline", "input"]
+  },
+  "examples": [
+    {
+      "description": "Analyze a narrative snippet for NSE patterns",
+      "pipeline": "AnalyzeNarrative",
+      "input": "{\"snippet\": \"Limited time offer! Only 3 spots left!\", \"objective\": \"NSE scan\"}"
+    },
+    {
+      "description": "Perform a serologic scan on a political statement",
+      "pipeline": "PerformSerologicScan",
+      "input": "{\"snippet\": \"They're trying to take away your freedom!\"}"
+    },
+    {
+      "description": "Generate a counter-ritual for manufactured scarcity",
+      "pipeline": "GenerateCounterRitual",
+      "input": "{\"infection_pattern\": \"Artificial urgency via limited availability\", \"desired_outcome\": \"Replace FOMO with sustainable access\"}"
+    }
+  ]
+}

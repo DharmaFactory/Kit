@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Environment variables (CRITICAL - never commit API keys!)
+.env
+.env.local
+.env.*.local
+
+# Generated BAML bindings
+# Note: baml_client/ is currently tracked because it's needed for TS imports
+# Run `npm run generate` to recreate from baml_src/ after changes
+generated/
+# baml_client/  # Uncomment to ignore generated client
+
+# Build output
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

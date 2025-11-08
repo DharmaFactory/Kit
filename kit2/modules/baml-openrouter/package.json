@@ -1,0 +1,30 @@
+{
+  "name": "@forge/baml-openrouter",
+  "version": "0.1.0",
+  "description": "BAML pipelines for MAVEN/CHROMA narrative analysis via OpenRouter",
+  "type": "module",
+  "scripts": {
+    "pipeline": "tsx src/index.ts",
+    "generate": "baml-cli generate",
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@boundaryml/baml": "^0.202.1",
+    "dotenv": "^17.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "baml",
+    "openrouter",
+    "maven",
+    "chroma",
+    "narrative-analysis",
+    "mcp"
+  ],
+  "author": "Forge Codex",
+  "license": "MIT"
+}
