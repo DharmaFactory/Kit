@@ -29,10 +29,17 @@ function parseArgs(): CLIArgs {
   if (!result.pipeline || !result.input) {
     console.error('Usage: tsx src/index.ts --pipeline <pipeline_name> --input <json_input>');
     console.error('');
-    console.error('Available pipelines:');
-    console.error('  - AnalyzeNarrative');
-    console.error('  - GenerateCounterRitual');
-    console.error('  - PerformSerologicScan');
+    console.error('MAVEN/CHROMA Pipelines:');
+    console.error('  - AnalyzeNarrative        (snippet, objective)');
+    console.error('  - GenerateCounterRitual   (infection_pattern, desired_outcome)');
+    console.error('  - PerformSerologicScan    (snippet)');
+    console.error('');
+    console.error('Utility Pipelines:');
+    console.error('  - DeepDive                (topic, context, focus)');
+    console.error('  - ExploreAlternatives     (problem, constraints, attempted)');
+    console.error('  - CritiqueArtifact        (artifact_type, artifact, goals)');
+    console.error('  - ThoughtPartner          (current_thinking, uncertainty, mode)');
+    console.error('  - SynthesizeContext       (sources, goal, format)');
     process.exit(1);
   }
 
@@ -84,8 +91,73 @@ async function main() {
         result = await b.PerformSerologicScan(inputData.snippet);
         break;
 
+      // Utility Pipelines
+      case 'DeepDive':
+      case 'deep_dive':
+        if (!inputData.topic || !inputData.context) {
+          throw new Error('DeepDive requires: { topic: string, context: string, focus?: string }');
+        }
+        result = await b.DeepDive(
+          inputData.topic,
+          inputData.context,
+          inputData.focus || ''
+        );
+        break;
+
+      case 'ExploreAlternatives':
+      case 'explore_alternatives':
+      case 'alternatives':
+        if (!inputData.problem || !inputData.constraints) {
+          throw new Error('ExploreAlternatives requires: { problem: string, constraints: string, attempted?: string }');
+        }
+        result = await b.ExploreAlternatives(
+          inputData.problem,
+          inputData.constraints,
+          inputData.attempted || 'None yet'
+        );
+        break;
+
+      case 'CritiqueArtifact':
+      case 'critique_artifact':
+      case 'critique':
+        if (!inputData.artifact_type || !inputData.artifact || !inputData.goals) {
+          throw new Error('CritiqueArtifact requires: { artifact_type: string, artifact: string, goals: string }');
+        }
+        result = await b.CritiqueArtifact(
+          inputData.artifact_type,
+          inputData.artifact,
+          inputData.goals
+        );
+        break;
+
+      case 'ThoughtPartner':
+      case 'thought_partner':
+      case 'partner':
+        if (!inputData.current_thinking || !inputData.uncertainty || !inputData.mode) {
+          throw new Error('ThoughtPartner requires: { current_thinking: string, uncertainty: string, mode: "challenge"|"probe"|"refine" }');
+        }
+        result = await b.ThoughtPartner(
+          inputData.current_thinking,
+          inputData.uncertainty,
+          inputData.mode
+        );
+        break;
+
+      case 'SynthesizeContext':
+      case 'synthesize_context':
+      case 'synthesize':
+        if (!inputData.sources || !inputData.goal) {
+          throw new Error('SynthesizeContext requires: { sources: string, goal: string, format?: string }');
+        }
+        result = await b.SynthesizeContext(
+          inputData.sources,
+          inputData.goal,
+          inputData.format || 'summary'
+        );
+        break;
+
       default:
-        throw new Error(`Unknown pipeline: ${pipeline}. Available: AnalyzeNarrative, GenerateCounterRitual, PerformSerologicScan`);
+        throw new Error(`Unknown pipeline: ${pipeline}. Run without args for list of available pipelines.`);
     }
 
     // Output result as JSON to stdout

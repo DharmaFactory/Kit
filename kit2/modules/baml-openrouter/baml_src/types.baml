@@ -76,3 +76,104 @@ class AnalysisResult {
   confidence float @description("Confidence score 0.0-1.0")
   metadata string @description("Additional context or metadata as JSON string")
 }
+
+// ========================================
+// UTILITY PIPELINES - General Purpose Analysis
+// ========================================
+
+// DeepAnalysis - Extended multi-angle analysis
+// Used for complex problems requiring extended reasoning
+class DeepAnalysis {
+  summary string @description("1-2 paragraph executive summary of the analysis")
+
+  technical_perspective string @description("Technical implementation considerations and mechanisms")
+
+  conceptual_perspective string @description("Conceptual framework and theoretical grounding")
+
+  practical_perspective string @description("Real-world application, trade-offs, and constraints")
+
+  edge_cases string[] @description("List of edge cases, failure modes, and boundary conditions")
+
+  connections string[] @description("Related concepts, patterns, or prior art to consider")
+
+  recommendations string[] @description("Concrete actionable recommendations (prioritized)")
+
+  uncertainties string[] @description("What remains uncertain or needs further investigation")
+}
+
+// Approach - Single solution approach
+class Approach {
+  name string @description("Short name for this approach/pattern")
+
+  mechanism string @description("Core idea and how it works (2-3 sentences)")
+
+  strengths string[] @description("What this approach does well")
+
+  weaknesses string[] @description("Limitations, costs, or downsides")
+
+  best_for string @description("Scenario where this approach shines")
+
+  implementation_sketch string @description("High-level steps to implement")
+}
+
+// AlternativeApproaches - Multiple solution paths
+// Used when exploring different ways to solve a problem
+class AlternativeApproaches {
+  approaches Approach[] @description("List of 3-5 distinct approaches")
+
+  comparison_matrix string @description("Quick comparison highlighting key differences")
+
+  recommendation string @description("Which approach to try first and why")
+}
+
+// CriticalReview - Adversarial analysis
+// Used to find weaknesses before committing work
+class CriticalReview {
+  overall_assessment string @description("High-level judgment of the artifact's quality")
+
+  strengths string[] @description("What works well (be specific)")
+
+  vulnerabilities string[] @description("Weaknesses, risks, and potential failure points")
+
+  missing_considerations string[] @description("What's not addressed that should be")
+
+  edge_cases string[] @description("Scenarios this doesn't handle well")
+
+  specific_suggestions string[] @description("Concrete improvements (prioritized by impact)")
+
+  risk_level string @description("Overall risk: Low, Medium, High, Critical")
+}
+
+// ThoughtResponse - Dialogue partner response
+// Used for Socratic questioning and assumption challenging
+class ThoughtResponse {
+  mode string @description("The mode used: challenge, probe, or refine")
+
+  key_questions string[] @description("2-4 sharp clarifying or challenging questions")
+
+  challenges string[] @description("Assumptions being challenged or counterarguments")
+
+  alternative_framings string[] @description("Different ways to think about the problem")
+
+  next_steps string[] @description("Concrete next steps to make progress")
+
+  conversational_response string @description("Full conversational text (for context)")
+}
+
+// SynthesisResult - Integrated analysis from multiple sources
+// Used to combine information and extract actionable insights
+class SynthesisResult {
+  executive_summary string @description("High-level synthesis in 2-3 paragraphs")
+
+  key_themes string[] @description("Major themes across all sources")
+
+  points_of_agreement string[] @description("Where sources align or reinforce each other")
+
+  points_of_disagreement string[] @description("Conflicts, tensions, or contradictions")
+
+  information_gaps string[] @description("What's missing or unclear across sources")
+
+  actionable_insights string[] @description("Concrete takeaways and next steps")
+
+  decision_recommendation string @description("If goal was a decision, what's recommended and why")
+}

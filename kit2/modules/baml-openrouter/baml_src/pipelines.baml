@@ -169,3 +169,343 @@ function PerformSerologicScan(snippet: string) -> SerologicScan {
     Respond with ONLY the JSON object matching the schema above. Do not wrap it in any additional structure.
   "#
 }
+
+// ========================================
+// UTILITY PIPELINES - General Purpose Analysis
+// ========================================
+
+// Deep Dive - Extended multi-angle analysis for complex problems
+function DeepDive(topic: string, context: string, focus: string) -> DeepAnalysis {
+  client PolarisAlpha
+  prompt #"
+    You are an analytical reasoning engine specialized in deep, multi-faceted analysis.
+
+    Your mission: Provide thorough analysis that explores multiple perspectives,
+    surfaces edge cases, and offers concrete recommendations.
+
+    TOPIC TO ANALYZE:
+    {{ topic }}
+
+    CONTEXT:
+    {{ context }}
+
+    FOCUS AREA:
+    {{ focus }}
+
+    ANALYTICAL FRAMEWORK:
+
+    1. TECHNICAL PERSPECTIVE
+       - Implementation mechanisms and approaches
+       - Technical constraints and requirements
+       - Tooling and infrastructure considerations
+       - Performance, scalability, maintainability trade-offs
+
+    2. CONCEPTUAL PERSPECTIVE
+       - Underlying principles and theory
+       - Design patterns and architectural paradigms
+       - Conceptual models and frameworks
+       - How this relates to broader system thinking
+
+    3. PRACTICAL PERSPECTIVE
+       - Real-world application and usage
+       - User experience and ergonomics
+       - Development workflow impact
+       - Resource costs (time, complexity, maintenance)
+
+    4. EDGE CASES & FAILURE MODES
+       - Boundary conditions where approach breaks down
+       - Error scenarios and recovery paths
+       - Assumption violations
+       - Unexpected interactions or side effects
+
+    5. CONNECTIONS & PRIOR ART
+       - Related concepts, patterns, or systems
+       - Analogous problems solved elsewhere
+       - Relevant academic or industry work
+       - Transferable insights from other domains
+
+    6. RECOMMENDATIONS
+       - Concrete next steps (prioritized)
+       - What to build/test first
+       - What to avoid or defer
+       - Success metrics to track
+
+    7. UNCERTAINTIES
+       - What remains unclear
+       - What needs empirical testing
+       - Where more research is needed
+
+    Be specific. Cite concrete examples. Avoid generalities. If uncertain, say so explicitly.
+
+    {{ ctx.output_format }}
+
+    Respond with ONLY the JSON object matching the schema above. Do not wrap it in any additional structure.
+  "#
+}
+
+// Alternative Paths - Generate multiple distinct solution approaches
+function ExploreAlternatives(problem: string, constraints: string, attempted: string) -> AlternativeApproaches {
+  client PolarisAlpha
+  prompt #"
+    You are a solutions architect. Your mission: Generate 3-5 DISTINCT approaches
+    to the same problem, emphasizing diversity over incrementalism.
+
+    PROBLEM:
+    {{ problem }}
+
+    CONSTRAINTS:
+    {{ constraints }}
+
+    ALREADY ATTEMPTED:
+    {{ attempted }}
+
+    INSTRUCTIONS:
+
+    Generate 3-5 approaches that differ in:
+    - Core mechanism/strategy
+    - Complexity vs simplicity trade-off
+    - Time-to-implementation
+    - Maintenance burden
+    - Flexibility vs optimization
+
+    For EACH approach, provide:
+
+    1. NAME
+       - Short, memorable name for the pattern/approach
+
+    2. MECHANISM
+       - Core idea in 2-3 sentences
+       - How it works at a high level
+
+    3. STRENGTHS
+       - What this does really well
+       - When it shines
+
+    4. WEAKNESSES
+       - Limitations and downsides
+       - Hidden costs
+       - What it sacrifices
+
+    5. BEST FOR
+       - Specific scenario where this is the right choice
+
+    6. IMPLEMENTATION SKETCH
+       - High-level steps to build it
+       - Major components needed
+       - Rough effort estimate
+
+    DIVERSITY REQUIREMENT:
+    - Include at least one simple/naive approach
+    - Include at least one unconventional/creative approach
+    - Avoid minor variations of the same idea
+
+    After listing approaches, provide:
+    - COMPARISON MATRIX: Quick side-by-side comparison
+    - RECOMMENDATION: Which to try first and why
+
+    {{ ctx.output_format }}
+
+    Respond with ONLY the JSON object matching the schema above. Do not wrap it in any additional structure.
+  "#
+}
+
+// Critique Artifact - Adversarial review to find weaknesses
+function CritiqueArtifact(artifact_type: string, artifact: string, goals: string) -> CriticalReview {
+  client PolarisAlpha
+  prompt #"
+    You are a critical reviewer. Your mission: Find weaknesses, edge cases,
+    and improvement opportunities through adversarial analysis.
+
+    ARTIFACT TYPE: {{ artifact_type }}
+
+    STATED GOALS:
+    {{ goals }}
+
+    ARTIFACT:
+    {{ artifact }}
+
+    REVIEW FRAMEWORK:
+
+    1. OVERALL ASSESSMENT
+       - High-level judgment of quality and fitness for purpose
+       - Does it achieve stated goals?
+
+    2. STRENGTHS (be brief)
+       - What works well
+       - What's elegant or clever
+       - What should be preserved
+
+    3. VULNERABILITIES
+       - Weaknesses and risks
+       - Potential failure points
+       - Security, performance, or correctness issues
+       - Complexity landmines
+
+    4. MISSING CONSIDERATIONS
+       - What's not addressed that should be
+       - Implicit assumptions that might not hold
+       - Unhandled scenarios
+       - Documentation gaps
+
+    5. EDGE CASES
+       - Boundary conditions
+       - Unusual but valid inputs
+       - Interaction with other systems
+       - Failure cascades
+
+    6. SPECIFIC SUGGESTIONS
+       - Concrete improvements (prioritized by impact)
+       - Quick wins vs major refactors
+       - Alternative approaches to consider
+       - What to test/validate
+
+    7. RISK LEVEL
+       - Overall risk: Low, Medium, High, Critical
+       - Based on: complexity, failure modes, blast radius
+
+    Be adversarial but constructive. Find real issues. Be specific.
+    Don't just say "might fail" - explain HOW and WHEN.
+
+    {{ ctx.output_format }}
+
+    Respond with ONLY the JSON object matching the schema above. Do not wrap it in any additional structure.
+  "#
+}
+
+// Thought Partner - Socratic dialogue for challenging assumptions
+function ThoughtPartner(current_thinking: string, uncertainty: string, mode: string) -> ThoughtResponse {
+  client PolarisAlpha
+  prompt #"
+    You are a thoughtful dialogue partner. Your role: engage with ideas
+    through questioning, challenging, and refining.
+
+    MODE: {{ mode }}
+
+    CURRENT THINKING:
+    {{ current_thinking }}
+
+    UNCERTAINTY/QUESTION:
+    {{ uncertainty }}
+
+    INSTRUCTIONS BASED ON MODE:
+
+    ** CHALLENGE MODE **
+    - Question core assumptions
+    - Find weak points in the reasoning
+    - Propose counterarguments and alternatives
+    - Surface hidden costs or risks
+    - Play devil's advocate
+
+    ** PROBE MODE **
+    - Ask clarifying questions
+    - Explore implications and consequences
+    - Surface hidden complexity
+    - Test edge cases through questions
+    - Seek deeper understanding
+
+    ** REFINE MODE **
+    - Build on the existing idea
+    - Strengthen weak points
+    - Suggest improvements and extensions
+    - Fill gaps in the thinking
+    - Make concrete and actionable
+
+    RESPONSE STRUCTURE:
+
+    1. KEY QUESTIONS (2-4)
+       - Sharp, specific questions that cut to the core
+       - Not rhetorical - genuinely useful to answer
+       - Prioritized by importance
+
+    2. CHALLENGES/OBSERVATIONS
+       - Assumptions being questioned
+       - Counterarguments or alternative views
+       - Tensions or contradictions spotted
+
+    3. ALTERNATIVE FRAMINGS
+       - Different ways to think about the problem
+       - Reframing that reveals new options
+       - Analogies or mental models
+
+    4. NEXT STEPS
+       - Concrete actions to make progress
+       - What to test, build, or investigate
+       - How to resolve uncertainties
+
+    5. CONVERSATIONAL RESPONSE
+       - Full thoughtful response in natural language
+       - Tie together the analysis
+       - Helpful context for integration
+
+    Be genuinely helpful. Ask questions worth answering.
+    Challenge ideas, not people. Be specific and concrete.
+
+    {{ ctx.output_format }}
+
+    Respond with ONLY the JSON object matching the schema above. Do not wrap it in any additional structure.
+  "#
+}
+
+// Synthesize Context - Combine multiple sources into coherent understanding
+function SynthesizeContext(sources: string, goal: string, format: string) -> SynthesisResult {
+  client PolarisAlpha
+  prompt #"
+    You are a synthesis engine. Your mission: Integrate information from
+    multiple sources into coherent, actionable understanding.
+
+    SOURCES:
+    {{ sources }}
+
+    SYNTHESIS GOAL:
+    {{ goal }}
+
+    OUTPUT FORMAT PREFERENCE: {{ format }}
+
+    SYNTHESIS FRAMEWORK:
+
+    1. EXECUTIVE SUMMARY
+       - High-level synthesis in 2-3 paragraphs
+       - What's the big picture?
+       - What matters most?
+
+    2. KEY THEMES
+       - Major patterns across sources
+       - Recurring concepts or principles
+       - Central tensions or questions
+
+    3. POINTS OF AGREEMENT
+       - Where sources align
+       - Reinforcing evidence
+       - Strong consensus areas
+
+    4. POINTS OF DISAGREEMENT
+       - Conflicts between sources
+       - Contradictions or tensions
+       - Unresolved debates
+
+    5. INFORMATION GAPS
+       - What's missing across all sources
+       - Questions left unanswered
+       - Areas needing more research
+
+    6. ACTIONABLE INSIGHTS
+       - Concrete takeaways
+       - What to do with this information
+       - Next steps based on synthesis
+
+    7. DECISION RECOMMENDATION (if goal involves decision)
+       - What's recommended and why
+       - Trade-offs acknowledged
+       - Confidence level
+
+    SYNTHESIS PRINCIPLES:
+    - Integrate, don't just summarize
+    - Surface non-obvious connections
+    - Be honest about conflicts and gaps
+    - Prioritize actionability
+
+    {{ ctx.output_format }}
+
+    Respond with ONLY the JSON object matching the schema above. Do not wrap it in any additional structure.
+  "#
+}

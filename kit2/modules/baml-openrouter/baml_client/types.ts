@@ -47,10 +47,27 @@ export function all_succeeded<CheckName extends string>(checks: Record<CheckName
 export function get_checks<CheckName extends string>(checks: Record<CheckName, Check>): Check[] {
     return Object.values(checks)
 }
+export interface AlternativeApproaches {
+  approaches: Approach[]
+  comparison_matrix: string
+  recommendation: string
+  
+}
+
 export interface AnalysisResult {
   output: string
   confidence: number
   metadata: string
+  
+}
+
+export interface Approach {
+  name: string
+  mechanism: string
+  strengths: string[]
+  weaknesses: string[]
+  best_for: string
+  implementation_sketch: string
   
 }
 
@@ -61,6 +78,29 @@ export interface CounterRitual {
   reflexive_note: string
   collateral_risk: number
   follow_up_trigger: string
+  
+}
+
+export interface CriticalReview {
+  overall_assessment: string
+  strengths: string[]
+  vulnerabilities: string[]
+  missing_considerations: string[]
+  edge_cases: string[]
+  specific_suggestions: string[]
+  risk_level: string
+  
+}
+
+export interface DeepAnalysis {
+  summary: string
+  technical_perspective: string
+  conceptual_perspective: string
+  practical_perspective: string
+  edge_cases: string[]
+  connections: string[]
+  recommendations: string[]
+  uncertainties: string[]
   
 }
 
@@ -82,5 +122,26 @@ export interface SerologicScan {
   beneficiaries: string[]
   weak_link: string
   viral_load: number
+  
+}
+
+export interface SynthesisResult {
+  executive_summary: string
+  key_themes: string[]
+  points_of_agreement: string[]
+  points_of_disagreement: string[]
+  information_gaps: string[]
+  actionable_insights: string[]
+  decision_recommendation: string
+  
+}
+
+export interface ThoughtResponse {
+  mode: string
+  key_questions: string[]
+  challenges: string[]
+  alternative_framings: string[]
+  next_steps: string[]
+  conversational_response: string
   
 }

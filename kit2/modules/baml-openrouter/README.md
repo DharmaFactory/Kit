@@ -187,20 +187,123 @@ See [README.pipeline.md](./README.pipeline.md) for detailed documentation of eac
 
 ---
 
-## 7. Next Steps
+## 7. Utility Pipelines — Feedback Loops for Enhanced Reasoning
 
-- ✅ Core pipelines operational (AnalyzeNarrative, GenerateCounterRitual, PerformSerologicScan)
+**Status**: ✅ Operational (5 pipelines tested)
+**Purpose**: Leverage free Polaris Alpha compute to augment Claude's cognitive loops with extended analysis, creative alternatives, and critical review.
+
+### Overview
+
+These pipelines create feedback loops where Claude can:
+1. **Offload deep analysis** to Polaris (30+ seconds of reasoning)
+2. **Get fresh perspectives** from a different model with different blind spots
+3. **Challenge assumptions** through Socratic dialogue
+4. **Explore solution spaces** with diverse alternatives
+5. **Synthesize complex information** from multiple sources
+
+**Key Insight**: Claude doesn't need rigid schemas from Polaris—unstructured thoughtful text works perfectly for integration into planning/validation/reflection loops.
+
+### The 5 Utility Pipelines
+
+#### DeepDive
+**When to use**: Complex problems needing multi-angle analysis
+
+```bash
+npm run pipeline -- --pipeline DeepDive --input '{
+  "topic": "Should we use monorepo or polyrepo for kit2 modules?",
+  "context": "Building extensible module system with potential third-party contributions",
+  "focus": "Developer experience and maintainability"
+}'
+```
+
+#### ExploreAlternatives
+**When to use**: Stuck on design decision, need diverse options
+
+```bash
+npm run pipeline -- --pipeline ExploreAlternatives --input '{
+  "problem": "Need persistent config for module preferences across Claude sessions",
+  "constraints": "Must survive restarts, human-readable, no external database",
+  "attempted": "Considered .env but thats for secrets only"
+}'
+```
+
+#### CritiqueArtifact
+**When to use**: Before committing significant work
+
+```bash
+npm run pipeline -- --pipeline CritiqueArtifact --input '{
+  "artifact_type": "code",
+  "artifact": "<code to review>",
+  "goals": "Implement module auto-discovery without central registry"
+}'
+```
+
+#### ThoughtPartner
+**When to use**: Uncertain about approach, want assumptions challenged
+
+```bash
+npm run pipeline -- --pipeline ThoughtPartner --input '{
+  "current_thinking": "Using JSON manifests for module discovery",
+  "uncertainty": "Is this overengineered? Should we use convention instead?",
+  "mode": "challenge"
+}'
+```
+
+Modes: `challenge` (devil's advocate), `probe` (clarifying questions), `refine` (strengthen idea)
+
+#### SynthesizeContext
+**When to use**: After reading many files, need actionable understanding
+
+```bash
+npm run pipeline -- --pipeline SynthesizeContext --input '{
+  "sources": "claude-perspective.md, module-manifest-schema.md, session logs",
+  "goal": "Decide on module discovery approach",
+  "format": "decision_matrix"
+}'
+```
+
+### Integration with Cognitive Functions
+
+From `cognitive-functions.md` loops:
+
+- **PERCEPTION** (gather context) → After reading multiple files: **SynthesizeContext**
+- **PLANNING** (design approach) → Exploring options: **ExploreAlternatives**, Deep analysis: **DeepDive**
+- **ACTION** (execute work) → Uncertain mid-execution: **ThoughtPartner** (probe mode)
+- **VALIDATION** (before commit) → Critical review: **CritiqueArtifact**
+- **REFLECTION** (after work) → Challenge assumptions: **ThoughtPartner** (challenge mode)
+
+### Performance & Cost
+
+- **Latency**: 30-35 seconds per pipeline (acceptable for quality of output)
+- **Tokens**: ~500-650 input, ~1700-2000 output
+- **Cost**: **FREE** (Polaris Alpha currently free on OpenRouter)
+- **Quality**: Exceptionally thoughtful, specific, actionable
+
+See [UTILITY_PIPELINES.md](./UTILITY_PIPELINES.md) for detailed documentation and [TESTS.md](./TESTS.md) for real-world test results.
+
+---
+
+## 8. Next Steps
+
+**Completed**:
+- ✅ Core MAVEN/CHROMA pipelines operational (AnalyzeNarrative, GenerateCounterRitual, PerformSerologicScan)
+- ✅ 5 utility pipelines implemented and tested (DeepDive, ExploreAlternatives, CritiqueArtifact, ThoughtPartner, SynthesizeContext)
 - ✅ Tested with OpenRouter Polaris Alpha model
 - ✅ CLI working with structured JSON output
+- ✅ Real-world validation (ThoughtPartner, ExploreAlternatives tested with actual project questions)
+
+**Remaining**:
+- [ ] Test remaining 3 utility pipelines (DeepDive, CritiqueArtifact, SynthesizeContext) with real project challenges
 - [ ] Register MCP tool for Claude Code integration
 - [ ] Add to kit2/.bootstrap for auto-discovery
 - [ ] Create module manifest per `kit2/docs/module-manifest-schema.md`
-- [ ] Expand with additional pipelines (NSE detection variants, CHROMA hydra mapping)
+- [ ] Meta-improvement: Use CritiqueArtifact on the utility pipeline prompts themselves
+- [ ] Integrate workflow patterns into cognitive-functions.md
 - [ ] Package as reusable npm workspace
 
 ---
 
-## 8. Troubleshooting
+## 9. Troubleshooting
 
 **Issue**: `OPENROUTER_API_KEY not found`
 - **Fix**: Create `.env` file with `OPENROUTER_API_KEY=sk-or-v1-...`

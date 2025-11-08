@@ -23,7 +23,7 @@ import { toBamlError, BamlStream, type HTTPRequest } from "@boundaryml/baml"
 import type { Checked, Check, RecursivePartialNull as MovedRecursivePartialNull } from "./types"
 import type { partial_types } from "./partial_types"
 import type * as types from "./types"
-import type {AnalysisResult, CounterRitual, NarrativeProbe, SerologicScan} from "./types"
+import type {AlternativeApproaches, AnalysisResult, Approach, CounterRitual, CriticalReview, DeepAnalysis, NarrativeProbe, SerologicScan, SynthesisResult, ThoughtResponse} from "./types"
 import type TypeBuilder from "./type_builder"
 import { AsyncHttpRequest, AsyncHttpStreamRequest } from "./async_request"
 import { LlmResponseParser, LlmStreamParser } from "./parser"
@@ -115,6 +115,90 @@ export class BamlAsyncClient {
     }
   }
   
+  async CritiqueArtifact(
+      artifact_type: string,artifact: string,goals: string,
+      __baml_options__?: BamlCallOptions
+  ): Promise<types.CriticalReview> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = await this.runtime.callFunction(
+        "CritiqueArtifact",
+        {
+          "artifact_type": artifact_type,"artifact": artifact,"goals": goals
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.CriticalReview
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
+  async DeepDive(
+      topic: string,context: string,focus: string,
+      __baml_options__?: BamlCallOptions
+  ): Promise<types.DeepAnalysis> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = await this.runtime.callFunction(
+        "DeepDive",
+        {
+          "topic": topic,"context": context,"focus": focus
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.DeepAnalysis
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
+  async ExploreAlternatives(
+      problem: string,constraints: string,attempted: string,
+      __baml_options__?: BamlCallOptions
+  ): Promise<types.AlternativeApproaches> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = await this.runtime.callFunction(
+        "ExploreAlternatives",
+        {
+          "problem": problem,"constraints": constraints,"attempted": attempted
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.AlternativeApproaches
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
   async GenerateCounterRitual(
       infection_pattern: string,desired_outcome: string,
       __baml_options__?: BamlCallOptions
@@ -171,6 +255,62 @@ export class BamlAsyncClient {
     }
   }
   
+  async SynthesizeContext(
+      sources: string,goal: string,format: string,
+      __baml_options__?: BamlCallOptions
+  ): Promise<types.SynthesisResult> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = await this.runtime.callFunction(
+        "SynthesizeContext",
+        {
+          "sources": sources,"goal": goal,"format": format
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.SynthesisResult
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
+  async ThoughtPartner(
+      current_thinking: string,uncertainty: string,mode: string,
+      __baml_options__?: BamlCallOptions
+  ): Promise<types.ThoughtResponse> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = await this.runtime.callFunction(
+        "ThoughtPartner",
+        {
+          "current_thinking": current_thinking,"uncertainty": uncertainty,"mode": mode
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.ThoughtResponse
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
 }
 
 class BamlStreamClient {
@@ -212,6 +352,108 @@ class BamlStreamClient {
         raw,
         (a): partial_types.NarrativeProbe => a,
         (a): types.NarrativeProbe => a,
+        this.ctxManager.cloneContext(),
+      )
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
+  CritiqueArtifact(
+      artifact_type: string,artifact: string,goals: string,
+      __baml_options__?: { tb?: TypeBuilder, clientRegistry?: ClientRegistry, collector?: Collector | Collector[], env?: Record<string, string | undefined> }
+  ): BamlStream<partial_types.CriticalReview, types.CriticalReview> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.streamFunction(
+        "CritiqueArtifact",
+        {
+          "artifact_type": artifact_type,"artifact": artifact,"goals": goals
+        },
+        undefined,
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return new BamlStream<partial_types.CriticalReview, types.CriticalReview>(
+        raw,
+        (a): partial_types.CriticalReview => a,
+        (a): types.CriticalReview => a,
+        this.ctxManager.cloneContext(),
+      )
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
+  DeepDive(
+      topic: string,context: string,focus: string,
+      __baml_options__?: { tb?: TypeBuilder, clientRegistry?: ClientRegistry, collector?: Collector | Collector[], env?: Record<string, string | undefined> }
+  ): BamlStream<partial_types.DeepAnalysis, types.DeepAnalysis> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.streamFunction(
+        "DeepDive",
+        {
+          "topic": topic,"context": context,"focus": focus
+        },
+        undefined,
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return new BamlStream<partial_types.DeepAnalysis, types.DeepAnalysis>(
+        raw,
+        (a): partial_types.DeepAnalysis => a,
+        (a): types.DeepAnalysis => a,
+        this.ctxManager.cloneContext(),
+      )
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
+  ExploreAlternatives(
+      problem: string,constraints: string,attempted: string,
+      __baml_options__?: { tb?: TypeBuilder, clientRegistry?: ClientRegistry, collector?: Collector | Collector[], env?: Record<string, string | undefined> }
+  ): BamlStream<partial_types.AlternativeApproaches, types.AlternativeApproaches> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.streamFunction(
+        "ExploreAlternatives",
+        {
+          "problem": problem,"constraints": constraints,"attempted": attempted
+        },
+        undefined,
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return new BamlStream<partial_types.AlternativeApproaches, types.AlternativeApproaches>(
+        raw,
+        (a): partial_types.AlternativeApproaches => a,
+        (a): types.AlternativeApproaches => a,
         this.ctxManager.cloneContext(),
       )
     } catch (error) {
@@ -280,6 +522,74 @@ class BamlStreamClient {
         raw,
         (a): partial_types.SerologicScan => a,
         (a): types.SerologicScan => a,
+        this.ctxManager.cloneContext(),
+      )
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
+  SynthesizeContext(
+      sources: string,goal: string,format: string,
+      __baml_options__?: { tb?: TypeBuilder, clientRegistry?: ClientRegistry, collector?: Collector | Collector[], env?: Record<string, string | undefined> }
+  ): BamlStream<partial_types.SynthesisResult, types.SynthesisResult> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.streamFunction(
+        "SynthesizeContext",
+        {
+          "sources": sources,"goal": goal,"format": format
+        },
+        undefined,
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return new BamlStream<partial_types.SynthesisResult, types.SynthesisResult>(
+        raw,
+        (a): partial_types.SynthesisResult => a,
+        (a): types.SynthesisResult => a,
+        this.ctxManager.cloneContext(),
+      )
+    } catch (error) {
+      throw toBamlError(error);
+    }
+  }
+  
+  ThoughtPartner(
+      current_thinking: string,uncertainty: string,mode: string,
+      __baml_options__?: { tb?: TypeBuilder, clientRegistry?: ClientRegistry, collector?: Collector | Collector[], env?: Record<string, string | undefined> }
+  ): BamlStream<partial_types.ThoughtResponse, types.ThoughtResponse> {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.streamFunction(
+        "ThoughtPartner",
+        {
+          "current_thinking": current_thinking,"uncertainty": uncertainty,"mode": mode
+        },
+        undefined,
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return new BamlStream<partial_types.ThoughtResponse, types.ThoughtResponse>(
+        raw,
+        (a): partial_types.ThoughtResponse => a,
+        (a): types.ThoughtResponse => a,
         this.ctxManager.cloneContext(),
       )
     } catch (error) {

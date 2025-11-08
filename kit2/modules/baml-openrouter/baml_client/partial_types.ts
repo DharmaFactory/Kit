@@ -20,7 +20,7 @@ $ pnpm add @boundaryml/baml
 
 import type { Image, Audio, Pdf, Video } from "@boundaryml/baml"
 import type { Checked, Check } from "./types"
-import type {  AnalysisResult,  CounterRitual,  NarrativeProbe,  SerologicScan } from "./types"
+import type {  AlternativeApproaches,  AnalysisResult,  Approach,  CounterRitual,  CriticalReview,  DeepAnalysis,  NarrativeProbe,  SerologicScan,  SynthesisResult,  ThoughtResponse } from "./types"
 import type * as types from "./types"
 
 /******************************************************************************
@@ -36,10 +36,23 @@ export interface StreamState<T> {
 }
 
 export namespace partial_types {
+    export interface AlternativeApproaches {
+      approaches: Approach[]
+      comparison_matrix?: string | null
+      recommendation?: string | null
+    }
     export interface AnalysisResult {
       output?: string | null
       confidence?: number | null
       metadata?: string | null
+    }
+    export interface Approach {
+      name?: string | null
+      mechanism?: string | null
+      strengths: string[]
+      weaknesses: string[]
+      best_for?: string | null
+      implementation_sketch?: string | null
     }
     export interface CounterRitual {
       catalytic_option?: string | null
@@ -48,6 +61,25 @@ export namespace partial_types {
       reflexive_note?: string | null
       collateral_risk?: number | null
       follow_up_trigger?: string | null
+    }
+    export interface CriticalReview {
+      overall_assessment?: string | null
+      strengths: string[]
+      vulnerabilities: string[]
+      missing_considerations: string[]
+      edge_cases: string[]
+      specific_suggestions: string[]
+      risk_level?: string | null
+    }
+    export interface DeepAnalysis {
+      summary?: string | null
+      technical_perspective?: string | null
+      conceptual_perspective?: string | null
+      practical_perspective?: string | null
+      edge_cases: string[]
+      connections: string[]
+      recommendations: string[]
+      uncertainties: string[]
     }
     export interface NarrativeProbe {
       foreground?: string | null
@@ -65,5 +97,22 @@ export namespace partial_types {
       beneficiaries: string[]
       weak_link?: string | null
       viral_load?: number | null
+    }
+    export interface SynthesisResult {
+      executive_summary?: string | null
+      key_themes: string[]
+      points_of_agreement: string[]
+      points_of_disagreement: string[]
+      information_gaps: string[]
+      actionable_insights: string[]
+      decision_recommendation?: string | null
+    }
+    export interface ThoughtResponse {
+      mode?: string | null
+      key_questions: string[]
+      challenges: string[]
+      alternative_framings: string[]
+      next_steps: string[]
+      conversational_response?: string | null
     }
 }

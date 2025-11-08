@@ -25,20 +25,32 @@ import { DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME } from "./
 export default class TypeBuilder {
     private tb: _TypeBuilder;
     
+    AlternativeApproaches: ClassViewer<'AlternativeApproaches', "approaches" | "comparison_matrix" | "recommendation">;
+    
     AnalysisResult: ClassViewer<'AnalysisResult', "output" | "confidence" | "metadata">;
     
+    Approach: ClassViewer<'Approach', "name" | "mechanism" | "strengths" | "weaknesses" | "best_for" | "implementation_sketch">;
+    
     CounterRitual: ClassViewer<'CounterRitual', "catalytic_option" | "safety_rail" | "ritual_hook" | "reflexive_note" | "collateral_risk" | "follow_up_trigger">;
+    
+    CriticalReview: ClassViewer<'CriticalReview', "overall_assessment" | "strengths" | "vulnerabilities" | "missing_considerations" | "edge_cases" | "specific_suggestions" | "risk_level">;
+    
+    DeepAnalysis: ClassViewer<'DeepAnalysis', "summary" | "technical_perspective" | "conceptual_perspective" | "practical_perspective" | "edge_cases" | "connections" | "recommendations" | "uncertainties">;
     
     NarrativeProbe: ClassViewer<'NarrativeProbe', "foreground" | "chroma" | "multiplicity" | "viral_load" | "maven_mode" | "analysis">;
     
     SerologicScan: ClassViewer<'SerologicScan', "macro_name" | "host_identity" | "incentive_surface" | "replication_channel" | "beneficiaries" | "weak_link" | "viral_load">;
+    
+    SynthesisResult: ClassViewer<'SynthesisResult', "executive_summary" | "key_themes" | "points_of_agreement" | "points_of_disagreement" | "information_gaps" | "actionable_insights" | "decision_recommendation">;
+    
+    ThoughtResponse: ClassViewer<'ThoughtResponse', "mode" | "key_questions" | "challenges" | "alternative_framings" | "next_steps" | "conversational_response">;
     
     
 
     constructor() {
         this.tb = new _TypeBuilder({
           classes: new Set([
-            "AnalysisResult","CounterRitual","NarrativeProbe","SerologicScan",
+            "AlternativeApproaches","AnalysisResult","Approach","CounterRitual","CriticalReview","DeepAnalysis","NarrativeProbe","SerologicScan","SynthesisResult","ThoughtResponse",
           ]),
           enums: new Set([
             
@@ -46,12 +58,28 @@ export default class TypeBuilder {
           runtime: DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME
         });
         
+        this.AlternativeApproaches = this.tb.classViewer("AlternativeApproaches", [
+          "approaches","comparison_matrix","recommendation",
+        ]);
+        
         this.AnalysisResult = this.tb.classViewer("AnalysisResult", [
           "output","confidence","metadata",
         ]);
         
+        this.Approach = this.tb.classViewer("Approach", [
+          "name","mechanism","strengths","weaknesses","best_for","implementation_sketch",
+        ]);
+        
         this.CounterRitual = this.tb.classViewer("CounterRitual", [
           "catalytic_option","safety_rail","ritual_hook","reflexive_note","collateral_risk","follow_up_trigger",
+        ]);
+        
+        this.CriticalReview = this.tb.classViewer("CriticalReview", [
+          "overall_assessment","strengths","vulnerabilities","missing_considerations","edge_cases","specific_suggestions","risk_level",
+        ]);
+        
+        this.DeepAnalysis = this.tb.classViewer("DeepAnalysis", [
+          "summary","technical_perspective","conceptual_perspective","practical_perspective","edge_cases","connections","recommendations","uncertainties",
         ]);
         
         this.NarrativeProbe = this.tb.classViewer("NarrativeProbe", [
@@ -60,6 +88,14 @@ export default class TypeBuilder {
         
         this.SerologicScan = this.tb.classViewer("SerologicScan", [
           "macro_name","host_identity","incentive_surface","replication_channel","beneficiaries","weak_link","viral_load",
+        ]);
+        
+        this.SynthesisResult = this.tb.classViewer("SynthesisResult", [
+          "executive_summary","key_themes","points_of_agreement","points_of_disagreement","information_gaps","actionable_insights","decision_recommendation",
+        ]);
+        
+        this.ThoughtResponse = this.tb.classViewer("ThoughtResponse", [
+          "mode","key_questions","challenges","alternative_framings","next_steps","conversational_response",
         ]);
         
         

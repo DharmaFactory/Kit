@@ -22,7 +22,7 @@ import type { BamlRuntime, FunctionResult, BamlCtxManager, Image, Audio, Pdf, Vi
 import { toBamlError, type HTTPRequest } from "@boundaryml/baml"
 import type { Checked, Check, RecursivePartialNull as MovedRecursivePartialNull } from "./types"
 import type * as types from "./types"
-import type {AnalysisResult, CounterRitual, NarrativeProbe, SerologicScan} from "./types"
+import type {AlternativeApproaches, AnalysisResult, Approach, CounterRitual, CriticalReview, DeepAnalysis, NarrativeProbe, SerologicScan, SynthesisResult, ThoughtResponse} from "./types"
 import type TypeBuilder from "./type_builder"
 import { HttpRequest, HttpStreamRequest } from "./sync_request"
 import { LlmResponseParser, LlmStreamParser } from "./parser"
@@ -117,6 +117,90 @@ export class BamlSyncClient {
     }
   }
   
+  CritiqueArtifact(
+      artifact_type: string,artifact: string,goals: string,
+      __baml_options__?: BamlCallOptions
+  ): types.CriticalReview {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.callFunctionSync(
+        "CritiqueArtifact",
+        {
+          "artifact_type": artifact_type,"artifact": artifact,"goals": goals
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.CriticalReview
+    } catch (error: any) {
+      throw toBamlError(error);
+    }
+  }
+  
+  DeepDive(
+      topic: string,context: string,focus: string,
+      __baml_options__?: BamlCallOptions
+  ): types.DeepAnalysis {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.callFunctionSync(
+        "DeepDive",
+        {
+          "topic": topic,"context": context,"focus": focus
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.DeepAnalysis
+    } catch (error: any) {
+      throw toBamlError(error);
+    }
+  }
+  
+  ExploreAlternatives(
+      problem: string,constraints: string,attempted: string,
+      __baml_options__?: BamlCallOptions
+  ): types.AlternativeApproaches {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.callFunctionSync(
+        "ExploreAlternatives",
+        {
+          "problem": problem,"constraints": constraints,"attempted": attempted
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.AlternativeApproaches
+    } catch (error: any) {
+      throw toBamlError(error);
+    }
+  }
+  
   GenerateCounterRitual(
       infection_pattern: string,desired_outcome: string,
       __baml_options__?: BamlCallOptions
@@ -168,6 +252,62 @@ export class BamlSyncClient {
         env,
       )
       return raw.parsed(false) as types.SerologicScan
+    } catch (error: any) {
+      throw toBamlError(error);
+    }
+  }
+  
+  SynthesizeContext(
+      sources: string,goal: string,format: string,
+      __baml_options__?: BamlCallOptions
+  ): types.SynthesisResult {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.callFunctionSync(
+        "SynthesizeContext",
+        {
+          "sources": sources,"goal": goal,"format": format
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.SynthesisResult
+    } catch (error: any) {
+      throw toBamlError(error);
+    }
+  }
+  
+  ThoughtPartner(
+      current_thinking: string,uncertainty: string,mode: string,
+      __baml_options__?: BamlCallOptions
+  ): types.ThoughtResponse {
+    try {
+      const options = { ...this.bamlOptions, ...(__baml_options__ || {}) }
+      const collector = options.collector ? (Array.isArray(options.collector) ? options.collector : [options.collector]) : [];
+      const rawEnv = __baml_options__?.env ? { ...process.env, ...__baml_options__.env } : { ...process.env };
+      const env: Record<string, string> = Object.fromEntries(
+        Object.entries(rawEnv).filter(([_, value]) => value !== undefined) as [string, string][]
+      );
+      const raw = this.runtime.callFunctionSync(
+        "ThoughtPartner",
+        {
+          "current_thinking": current_thinking,"uncertainty": uncertainty,"mode": mode
+        },
+        this.ctxManager.cloneContext(),
+        options.tb?.__tb(),
+        options.clientRegistry,
+        collector,
+        env,
+      )
+      return raw.parsed(false) as types.ThoughtResponse
     } catch (error: any) {
       throw toBamlError(error);
     }
