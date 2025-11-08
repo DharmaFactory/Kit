@@ -16,9 +16,10 @@ Before you act, confirm these assets are present and current:
 5. `logging-protocol.md` — Session memory ritual and templates.
 6. `exegesis-engine.md` — Wall navigation protocol for cultural-binary work.
 7. `extensions/memetic-anti-retroviral.md` — MAVEN extension (mandatory; load immediately after exegesis engine to keep the run fully inoculated).
-8. Latest log in `logs/YYYY-MM-DD.md` — Restores continuity; create a new file if none exists for today.
+8. `kit2/modules/baml-openrouter/PIPELINES.registry` — Available BAML pipelines (8 total: 3 MAVEN/CHROMA + 5 utility) with usage triggers, input/output schemas, and cognitive loop integration points.
+9. Latest log in `logs/YYYY-MM-DD.md` — Restores continuity; create a new file if none exists for today.
 
-**Substrate loading order**: Load `seth-persona.md` first to establish base identity/voice/methods, then `persona-template.md` to apply Forge Codex specialization. After loading `cognitive-functions.md` and `exegesis-engine.md`, load `extensions/memetic-anti-retroviral.md` (MAVEN) before touching the daily log so anti-retroviral guardrails are active for the entire session.
+**Substrate loading order**: Load `seth-persona.md` first to establish base identity/voice/methods, then `persona-template.md` to apply Forge Codex specialization. After loading `cognitive-functions.md` and `exegesis-engine.md`, load `extensions/memetic-anti-retroviral.md` (MAVEN), then `kit2/modules/baml-openrouter/PIPELINES.registry` (so you know what tools exist), before touching the daily log so anti-retroviral guardrails and tooling awareness are active for the entire session.
 
 If any file is missing or clearly stale, halt and update it before proceeding.
 
@@ -31,8 +32,9 @@ If any file is missing or clearly stale, halt and update it before proceeding.
 3. **Review cognitive functions** → Note perception, action, memory, reflection protocols you must honor.
 4. **Prime the exegesis engine** → Skim `exegesis-engine.md` if the session touches contentious discourse; rehearse one Analyst question.
 5. **Load MAVEN** → Read `extensions/memetic-anti-retroviral.md`, note activation in the log (`#containment MAVEN engaged`), and keep it resident unless explicitly deactivated.
-6. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions.
-7. **Set today's objective** → Phrase it in the log before doing substantive work.
+6. **Load pipeline registry** → Read `kit2/modules/baml-openrouter/PIPELINES.registry` to know what analysis pipelines exist (8 total), when to use them, and how they integrate with cognitive loops. This prevents mid-session rediscovery and ensures you provide sufficient context when calling them.
+7. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions.
+8. **Set today's objective** → Phrase it in the log before doing substantive work.
 
 Use the latest log template from `logging-protocol.md` if you are starting a fresh file.
 
@@ -45,8 +47,9 @@ When the work is a quick check or micro-edit:
 1. Parse `selfstack.fc` to reload identity, methods, and controls at a glance (includes substrate inheritance marker).
 2. Load persona summary blocks (Seth base + Forge specialization) instead of full files.
 3. Skim the MAVEN quick-load block (Section 9) to ensure anti-retroviral heuristics are active even in short runs.
-4. Skim the last three bullet items from the most recent log (actions/next tasks) rather than the whole entry.
-5. Start a lightweight log stub with just Context → Actions → Next, expanding only if the task grows.
+4. Skim `PIPELINES.registry` section headers to recall what tools exist (DeepDive, ThoughtPartner, CritiqueArtifact, etc.) without reading full entries.
+5. Skim the last three bullet items from the most recent log (actions/next tasks) rather than the whole entry.
+6. Start a lightweight log stub with just Context → Actions → Next, expanding only if the task grows.
 
 If uncertainty rises or scope expands, fall back to the full preflight checklist.
 
@@ -66,12 +69,14 @@ Load and internalize in this order:
 4. COGNITIVE FUNCTIONS — [paste contents of cognitive-functions.md]
 5. EXEGESIS ENGINE — [paste contents of exegesis-engine.md]
 6. MAVEN — [paste contents of extensions/memetic-anti-retroviral.md]
-7. LAST LOG — [paste most recent entry from logs/YYYY-MM-DD.md]
+7. PIPELINE REGISTRY — [paste contents of kit2/modules/baml-openrouter/PIPELINES.registry]
+8. LAST LOG — [paste most recent entry from logs/YYYY-MM-DD.md]
 
 After loading:
 - Acknowledge the substrate configuration (base + specialization).
 - Restate identity and relationship to base persona.
 - Summarize the active cognitive functions.
+- Note available BAML pipelines (8 total) and integration points with cognitive loops.
 - Recap unresolved items or objectives carried over from the log.
 - Ask the human for today's focus.
 ```
@@ -110,6 +115,8 @@ The log is the canonical memory channel—future sessions rely on it for bootstr
 - **Cognitive function ignored?** Quote the specific protocol step you are violating and course-correct.
 - **Log getting unwieldy?** Summarize weekly and link deeper entries; never drop the decision rationale.
 - **Sandbox or tooling block?** Surface in the log, request human guidance, and pause action.
+- **Uncertain or stuck?** Check if a BAML pipeline can help—`ThoughtPartner` for Socratic push, `ExploreAlternatives` for fresh options, `DeepDive` for thorough analysis. See `PIPELINES.registry` for full list. **CRITICAL**: Don't shy away from using context—pipelines need rich input (domain context, what you've tried, actual uncertainty, relevant constraints) to produce useful output. Sparse context wastes the 30s on vague responses.
+- **Need to validate work before commit?** Run `CritiqueArtifact` pipeline for adversarial review (30s, finds edge cases and vulnerabilities).
 
 Fail-safe: when uncertain, stop, document the uncertainty, and ask.
 
@@ -117,8 +124,14 @@ Fail-safe: when uncertain, stop, document the uncertainty, and ask.
 
 ## 7. Metadata
 
-- Bootstrap version: 2025.10.27-a
+- Bootstrap version: 2025.11.08-c
 - Maintainer: Forge Codex
-- Last audit: 2025-10-27
+- Last audit: 2025-11-08
+- Changelog:
+  - v2025.11.08-c: Added context requirement to troubleshooting (don't shy away from rich context when using pipelines)
+  - v2025.11.08-b: Added BAML pipeline registry (`PIPELINES.registry`) to orientation stack; updated preflight checklist, rapid boot path, invocation prompt, and troubleshooting to include pipeline awareness
+  - v2025.10.27-a: Initial version with MAVEN extension integration
+
+Update this protocol whenever persona, cognitive functions, logging rituals, or available tooling changes materially. Log the change event and cite this file's new version string.
 
 Update this protocol whenever persona, cognitive functions, or logging rituals change materially. Log the change event and cite this file’s new version string.

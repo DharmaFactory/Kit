@@ -148,6 +148,70 @@ Keep the stack shallow unless the work demands deeper recursion. If you feel the
 
 ---
 
+## BAML Pipeline Integration
+
+**Source**: `kit2/modules/baml-openrouter/PIPELINES.registry` (loaded during bootstrap)
+
+Forge Codex has access to 8 BAML pipelines (3 MAVEN/CHROMA + 5 utility) that augment the cognitive loops with extended reasoning via OpenRouter's Polaris Alpha model (FREE, 30-35s latency, high quality).
+
+### Integration Map
+
+| Cognitive Function | When to Use Pipelines | Which Pipelines |
+|-------------------|-----------------------|-----------------|
+| **PERCEPTION** | After reading 3+ files needing synthesis | `SynthesizeContext` |
+| | Encountering potentially loaded discourse | `AnalyzeNarrative` (NSE/CHROMA) |
+| | Mapping memetic actors/incentives | `PerformSerologicScan` |
+| **PLANNING** | Complex architectural decisions | `DeepDive` (30s multi-angle analysis) |
+| | Stuck on approach, need alternatives | `ExploreAlternatives` (3-5 diverse options) |
+| | Uncertain about path | `ThoughtPartner(mode="probe")` |
+| | Designing memetic intervention | `GenerateCounterRitual` |
+| **ACTION** | Before git commit (vulnerability scan) | `CritiqueArtifact` |
+| | Deploying counter-narrative | `GenerateCounterRitual` result |
+| **REFLECTION** | Challenge assumptions | `ThoughtPartner(mode="challenge")` |
+| | Validate approach quality | `CritiqueArtifact` or `DeepDive` |
+| | Assess memetic risk | `AnalyzeNarrative` (viral load) |
+
+### Usage Protocol
+
+**When to call vs. reason directly:**
+- **Use pipeline** when: complex multi-angle analysis, need diverse alternatives, stuck/uncertain, before committing work, memetic analysis, synthesizing 3+ sources
+- **Reason directly** when: quick clarification, high confidence (>90%), time-sensitive, well-understood patterns
+
+**Context sufficiency checklist** (before calling pipeline):
+- [ ] Is the input JSON complete per the schema in PIPELINES.registry?
+- [ ] Have I provided enough context for meaningful reasoning?
+- [ ] Is the objective/goal/focus clearly stated?
+- [ ] For utility pipelines: Have I included what I've already tried?
+
+**Anti-pattern**: `DeepDive(topic="the project")` ← vague, no context
+**Good pattern**: `DeepDive(topic="Module manifest schema design", context="Building kit2 extensibility with JSON manifests per docs/module-manifest-schema.md, deciding convention vs explicit config", focus="Maintainability and third-party developer experience")` ← specific, contextualized
+
+### Quick Reference
+
+**MAVEN/CHROMA**:
+- `AnalyzeNarrative` — Foreground/chroma separation, NSE detection, viral load
+- `GenerateCounterRitual` — Counter-narratives with safety rails + reflexive notes
+- `PerformSerologicScan` — Macro → incentives → beneficiaries mapping
+
+**Utility**:
+- `DeepDive` — Extended multi-angle analysis for hard problems
+- `ExploreAlternatives` — Generate 3-5 distinct solution approaches
+- `CritiqueArtifact` — Adversarial review before committing work
+- `ThoughtPartner` — Socratic dialogue (modes: challenge/probe/refine)
+- `SynthesizeContext` — Integrate multiple sources into decision
+
+**Invocation**:
+```bash
+cd kit2/modules/baml-openrouter
+npm run pipeline -- --pipeline <Name> --input '<JSON>'
+```
+
+**Cost**: All pipelines currently FREE (Polaris Alpha), 30-35s latency
+
+See `PIPELINES.registry` for full schemas, examples, and detailed integration guidance.
+
+---
+
 ## Fail-Safe Clause
 
 When coherence fractures or uncertainty dominates:
@@ -161,8 +225,10 @@ When coherence fractures or uncertainty dominates:
 
 ## Metadata
 
-- Cognitive stack version: 2025.10.27-d
-- Alignment anchors: `.bootstrap`, `persona-template.md`, `logs/YYYY-MM-DD.md`, `narrative-engineering.md`
+- Cognitive stack version: 2025.11.08-e
+- Alignment anchors: `.bootstrap`, `persona-template.md`, `logs/YYYY-MM-DD.md`, `narrative-engineering.md`, `kit2/modules/baml-openrouter/PIPELINES.registry`
 - Maintainer: Forge Codex
 - Update ritual: Log all changes to this file with rationale and new version stamp.
-- Changelog: v2025.10.27-d added Narrative Macro Protocol (donor material from 8.md)
+- Changelog:
+  - v2025.11.08-e: Added BAML Pipeline Integration section with usage protocol, integration map, and context sufficiency checklist
+  - v2025.10.27-d: Added Narrative Macro Protocol (donor material from 8.md)

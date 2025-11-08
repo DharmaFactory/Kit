@@ -1,0 +1,178 @@
+# BAML Pipeline Registry — Quick Reference
+# Load this file during bootstrap to know what pipelines exist and when to use them
+# Version: 2025-11-08-a
+
+## MAVEN/CHROMA Pipelines (Narrative Analysis)
+
+### AnalyzeNarrative
+**Purpose**: CHROMA semantic analysis + NSE (Narrative Scarcity Engine) detection
+**When to use**: Analyzing text for memetic structure, foreground/background separation, viral load assessment
+**Input**: `{ snippet: string, objective: string }`
+**Output**: NarrativeProbe (foreground, chroma, multiplicity[], viral_load, maven_mode, analysis)
+**Cognitive loop**: PERCEPTION (when encountering potentially loaded discourse), REFLECTION (when assessing memetic risk)
+**Example**: Scan user request for cultural binaries, detect NSE patterns in marketing copy
+
+### GenerateCounterRitual
+**Purpose**: Create counter-narratives with safety rails and reflexive notes
+**When to use**: Need to respond to memetic infection with treatment (MAVEN Surgical mode)
+**Input**: `{ infection_pattern: string, desired_outcome: string }`
+**Output**: CounterRitual (catalytic_option, safety_rail, ritual_hook, reflexive_note, collateral_risk, follow_up_trigger)
+**Cognitive loop**: ACTION (when deploying counter-narrative), PLANNING (when designing intervention)
+**Example**: Design response to artificial urgency pattern, create alternative framing with rollback plan
+
+### PerformSerologicScan
+**Purpose**: MAVEN serologic scan mapping macro → incentives → beneficiaries
+**When to use**: Need to understand replication machinery of a spreading narrative
+**Input**: `{ snippet: string }`
+**Output**: SerologicScan (macro_name, host_identity, incentive_surface, replication_channel, beneficiaries[], weak_link, viral_load)
+**Cognitive loop**: PERCEPTION (when identifying memetic actors), PLANNING (when designing intervention points)
+**Example**: Analyze viral tweet for S1 macro, map cui bono, identify weak links for disruption
+
+---
+
+## Utility Pipelines (General Reasoning Enhancement)
+
+### DeepDive
+**Purpose**: Extended multi-angle analysis for complex problems (30+ seconds of reasoning)
+**When to use**: Complex technical/conceptual problems needing thorough exploration; stuck on hard questions
+**Input**: `{ topic: string, context: string, focus: string }`
+**Output**: DeepAnalysis (summary, technical_perspective, conceptual_perspective, practical_perspective, edge_cases[], connections[], recommendations[], uncertainties[])
+**Cognitive loop**: PLANNING (before major architectural decisions), REFLECTION (when validating approach)
+**Example**: "Should we use monorepo or polyrepo?", "How should module discovery work?"
+**Cost**: FREE (Polaris Alpha), 30-35s latency, exceptional quality
+
+### ExploreAlternatives
+**Purpose**: Generate 3-5 distinct solution approaches emphasizing diversity over incrementalism
+**When to use**: Stuck on design decision, need fresh options, want to see solution space
+**Input**: `{ problem: string, constraints: string, attempted: string }`
+**Output**: AlternativeApproaches (approaches[], comparison_matrix, recommendation)
+**Cognitive loop**: PLANNING (when initial approach feels wrong), PERCEPTION (when gathering options)
+**Example**: "Need persistent config—what are my options?", "How should we structure logs?"
+**Cost**: FREE, 30-35s latency, remarkably creative
+
+### CritiqueArtifact
+**Purpose**: Adversarial review to find weaknesses before committing work
+**When to use**: Before git commit, before publishing docs, when confidence < 90%
+**Input**: `{ artifact_type: string, artifact: string, goals: string }`
+**Output**: CriticalReview (overall_assessment, strengths[], vulnerabilities[], missing_considerations[], edge_cases[], specific_suggestions[], risk_level)
+**Cognitive loop**: VALIDATION (before action completion), REFLECTION (quality check)
+**Example**: Review code before commit, critique documentation before publish, find edge cases
+**Cost**: FREE, 30-35s latency, thorough and specific
+
+### ThoughtPartner
+**Purpose**: Socratic dialogue for challenging assumptions, exploring implications
+**When to use**: Uncertain about approach, need assumptions challenged, want deeper questions
+**Input**: `{ current_thinking: string, uncertainty: string, mode: "challenge"|"probe"|"refine" }`
+**Output**: ThoughtResponse (mode, key_questions[], challenges[], alternative_framings[], next_steps[], conversational_response)
+**Cognitive loop**: PLANNING (when approach uncertain), REFLECTION (assumption audit)
+**Modes**:
+  - `challenge`: Devil's advocate, question assumptions, find weak points
+  - `probe`: Clarifying questions, explore implications, test edge cases
+  - `refine`: Build on idea, strengthen weaknesses, make concrete
+**Example**: "Is this overengineered?", "What am I missing?", "Challenge this plan"
+**Cost**: FREE, 30-35s latency, genuinely insightful
+
+### SynthesizeContext
+**Purpose**: Combine multiple sources into coherent actionable understanding
+**When to use**: After reading many files, need decision from scattered context, integrating research
+**Input**: `{ sources: string, goal: string, format: string }`
+**Output**: SynthesisResult (executive_summary, key_themes[], points_of_agreement[], points_of_disagreement[], information_gaps[], actionable_insights[], decision_recommendation)
+**Cognitive loop**: PERCEPTION (after context gathering), PLANNING (before decision from complex inputs)
+**Example**: "Read 5 docs, what's the decision?", "Integrate session logs into next steps"
+**Cost**: FREE, 30-35s latency, excellent integration
+
+---
+
+## Usage Protocol
+
+### When to call pipelines vs. reason directly
+
+**USE PIPELINE when**:
+- Complex multi-angle analysis needed (DeepDive)
+- Need diverse alternatives to escape local optimum (ExploreAlternatives)
+- Before committing significant work (CritiqueArtifact)
+- Stuck or uncertain, need Socratic push (ThoughtPartner)
+- Memetic analysis required (MAVEN pipelines)
+- Synthesizing 3+ sources into decision (SynthesizeContext)
+
+**REASON DIRECTLY when**:
+- Quick clarification or straightforward task
+- Already have high confidence (>90%)
+- Time-sensitive interaction (pipelines add 30-35s)
+- Working within well-understood patterns
+
+### Integration with cognitive functions
+
+From `cognitive-functions.md`:
+
+**PERCEPTION**:
+- After reading multiple files → `SynthesizeContext` for integration
+- When encountering contested discourse → `AnalyzeNarrative` for memetic scan
+- When mapping actors/incentives → `PerformSerologicScan`
+
+**PLANNING**:
+- Complex architectural decisions → `DeepDive` for thorough analysis
+- Stuck on approach → `ExploreAlternatives` for fresh options
+- Uncertain about path → `ThoughtPartner(mode="probe")` for questions
+- Designing intervention → `GenerateCounterRitual` with safety rails
+
+**ACTION**:
+- Before git commit → `CritiqueArtifact` for vulnerability scan
+- Deploying counter-narrative → `GenerateCounterRitual` result
+
+**REFLECTION**:
+- Challenge assumptions → `ThoughtPartner(mode="challenge")`
+- Validate approach → `DeepDive` or `CritiqueArtifact`
+- Memetic risk assessment → `AnalyzeNarrative` for viral load
+
+### How to invoke
+
+```bash
+# From kit2/modules/baml-openrouter/ directory
+npm run pipeline -- --pipeline <PipelineName> --input '<JSON>'
+
+# Examples
+npm run pipeline -- --pipeline DeepDive --input '{
+  "topic": "Module discovery mechanism",
+  "context": "Building extensible kit2 with third-party modules",
+  "focus": "Developer experience vs maintainability"
+}'
+
+npm run pipeline -- --pipeline ThoughtPartner --input '{
+  "current_thinking": "Using JSON manifests for module metadata",
+  "uncertainty": "Is this overengineered vs convention-based discovery?",
+  "mode": "challenge"
+}'
+```
+
+### Expected behavior for agents
+
+When you (the agent) load this registry:
+
+1. **Know what exists**: 8 pipelines available, grouped by purpose
+2. **Know when to use**: Each entry has "When to use" trigger + cognitive loop mapping
+3. **Know cost**: All currently FREE (Polaris Alpha), ~30-35s latency, high quality
+4. **Provide sufficient context**: Pipelines need well-formed inputs—don't just pass vague requests
+5. **Integrate outputs**: Pipeline results feed back into your planning/validation/reflection loops
+
+**Context sufficiency checklist** (before calling pipeline):
+- [ ] Is the input JSON complete per the schema?
+- [ ] Have I provided enough context for the pipeline to reason meaningfully?
+- [ ] Is the objective/goal/focus clearly stated?
+- [ ] For utility pipelines: Have I included what I've already tried/considered?
+
+**Anti-pattern**: Calling `DeepDive` with vague topic like "the project" without context
+**Good pattern**: `DeepDive(topic="Module manifest schema design", context="Building kit2 extensibility with JSON manifests per docs/module-manifest-schema.md, need to decide: convention vs explicit config", focus="Maintainability and third-party developer experience")`
+
+---
+
+## Version & Maintenance
+
+- Registry version: 2025-11-08-a
+- Maintainer: Forge Codex
+- Source: kit2/modules/baml-openrouter/baml_src/pipelines.baml
+- Update trigger: When pipelines added/changed, regenerate this registry
+- Related: cognitive-functions.md (integration points), .bootstrap (load order)
+
+**Changelog**:
+- 2025-11-08-a: Initial registry with 3 MAVEN/CHROMA + 5 utility pipelines
