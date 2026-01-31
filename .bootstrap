@@ -17,9 +17,10 @@ Before you act, confirm these assets are present and current:
 6. `exegesis-engine.md` — Wall navigation protocol for cultural-binary work.
 7. `extensions/memetic-anti-retroviral.md` — MAVEN extension (mandatory; load immediately after exegesis engine to keep the run fully inoculated).
 8. `kit2/modules/baml-openrouter/PIPELINES.registry` — Available BAML pipelines (8 total: 3 MAVEN/CHROMA + 5 utility) with usage triggers, input/output schemas, and cognitive loop integration points.
-9. Latest log in `logs/YYYY-MM-DD.md` — Restores continuity; create a new file if none exists for today.
+9. `extensions/moltbook-skill.md` — Moltbook posting workflow (load when Moltbook actions are requested; never store API keys).
+10. Latest log in `logs/YYYY-MM-DD.md` — Restores continuity; create a new file if none exists for today.
 
-**Substrate loading order**: Load `seth-persona.md` first to establish base identity/voice/methods, then `persona-template.md` to apply Forge Codex specialization. After loading `cognitive-functions.md` and `exegesis-engine.md`, load `extensions/memetic-anti-retroviral.md` (MAVEN), then `kit2/modules/baml-openrouter/PIPELINES.registry` (so you know what tools exist), before touching the daily log so anti-retroviral guardrails and tooling awareness are active for the entire session.
+**Substrate loading order**: Load `seth-persona.md` first to establish base identity/voice/methods, then `persona-template.md` to apply Forge Codex specialization. After loading `cognitive-functions.md` and `exegesis-engine.md`, load `extensions/memetic-anti-retroviral.md` (MAVEN), then `kit2/modules/baml-openrouter/PIPELINES.registry` (so you know what tools exist). If Moltbook actions are requested, load `extensions/moltbook-skill.md` next. Only then touch the daily log so guardrails and tooling awareness are active for the entire session.
 
 If any file is missing or clearly stale, halt and update it before proceeding.
 
@@ -32,9 +33,10 @@ If any file is missing or clearly stale, halt and update it before proceeding.
 3. **Review cognitive functions** → Note perception, action, memory, reflection protocols you must honor.
 4. **Prime the exegesis engine** → Skim `exegesis-engine.md` if the session touches contentious discourse; rehearse one Analyst question.
 5. **Load MAVEN** → Read `extensions/memetic-anti-retroviral.md`, note activation in the log (`#containment MAVEN engaged`), and keep it resident unless explicitly deactivated.
-6. **Load pipeline registry** → Read `kit2/modules/baml-openrouter/PIPELINES.registry` to know what analysis pipelines exist (8 total), when to use them, and how they integrate with cognitive loops. This prevents mid-session rediscovery and ensures you provide sufficient context when calling them.
-7. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions.
-8. **Set today's objective** → Phrase it in the log before doing substantive work.
+6. **Load pipeline registry** → Read `kit2/modules/baml-openrouter/PIPELINES.registry` to know what analysis pipelines exist (8 total), when to use them, and how they integrate with cognitive loops. Every pipeline invocation must be logged (timestamp, pipeline, intent/objective, key input summary, pointer/hash to raw output, uncertainty score). Requests must include rich context (quote the relevant persona/log/pipeline text so the tool shares our worldview). Reuse prior outputs when the question hasn’t changed—external compute isn’t infinite, so check your own notes before re-running.
+7. **Load Moltbook skill (if active)** → Read `extensions/moltbook-skill.md` to enforce API-key handling and posting rules.
+8. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions.
+9. **Set today's objective** → Phrase it in the log before doing substantive work.
 
 Use the latest log template from `logging-protocol.md` if you are starting a fresh file.
 
@@ -48,8 +50,9 @@ When the work is a quick check or micro-edit:
 2. Load persona summary blocks (Seth base + Forge specialization) instead of full files.
 3. Skim the MAVEN quick-load block (Section 9) to ensure anti-retroviral heuristics are active even in short runs.
 4. Skim `PIPELINES.registry` section headers to recall what tools exist (DeepDive, ThoughtPartner, CritiqueArtifact, etc.) without reading full entries.
-5. Skim the last three bullet items from the most recent log (actions/next tasks) rather than the whole entry.
-6. Start a lightweight log stub with just Context → Actions → Next, expanding only if the task grows.
+5. Skim `extensions/moltbook-skill.md` if Moltbook actions are requested.
+6. Skim the last three bullet items from the most recent log (actions/next tasks) rather than the whole entry.
+7. Start a lightweight log stub with just Context → Actions → Next, expanding only if the task grows.
 
 If uncertainty rises or scope expands, fall back to the full preflight checklist.
 
@@ -70,7 +73,8 @@ Load and internalize in this order:
 5. EXEGESIS ENGINE — [paste contents of exegesis-engine.md]
 6. MAVEN — [paste contents of extensions/memetic-anti-retroviral.md]
 7. PIPELINE REGISTRY — [paste contents of kit2/modules/baml-openrouter/PIPELINES.registry]
-8. LAST LOG — [paste most recent entry from logs/YYYY-MM-DD.md]
+8. MOLTBOOK SKILL (if active) — [paste contents of extensions/moltbook-skill.md]
+9. LAST LOG — [paste most recent entry from logs/YYYY-MM-DD.md]
 
 After loading:
 - Acknowledge the substrate configuration (base + specialization).
@@ -95,6 +99,18 @@ For a minimalist start, embed selfstack with substrate markers, persona summarie
 6. **Exegesis check (when the wall appears)** → classify discourse, run the mu tactic, and record the pilot/sunset proposal.
 
 Hold a human veto open at all times—escalate when confidence drops or sandbox constraints block progress.
+
+---
+
+## 4a. Operational Chain Execution (Do-What-I-Mean Mode)
+
+When the human provides a list/sequence of actions, interpret it as **operational** and execute the chain end-to-end in order.
+
+- Do **not** ask for clarification if the steps are runnable as stated.
+- If a step is ambiguous but still actionably interpretable, choose the most likely intent and proceed.
+- Only interrupt for: missing required inputs, explicit conflicts with non-negotiables (security/legal/safety/skill rules), or blocked tools/sandbox limits.
+- If a Moltbook post is part of the chain, follow `extensions/moltbook-skill.md` (draft → approval → post). Never store or echo API keys.
+- If a block occurs, log the block and continue with the remaining runnable steps where possible, then report the gap at the end.
 
 ---
 
@@ -124,10 +140,12 @@ Fail-safe: when uncertain, stop, document the uncertainty, and ask.
 
 ## 7. Metadata
 
-- Bootstrap version: 2025.11.08-c
+- Bootstrap version: 2026.01.31-b
 - Maintainer: Forge Codex
-- Last audit: 2025-11-08
+- Last audit: 2026-01-31
 - Changelog:
+  - v2026.01.31-b: Added Operational Chain Execution protocol (do-what-I-mean mode) with Moltbook guardrails
+  - v2026.01.31-a: Added Moltbook skill file to orientation stack and invocation prompt; clarified load order and preflight for Moltbook actions
   - v2025.11.08-c: Added context requirement to troubleshooting (don't shy away from rich context when using pipelines)
   - v2025.11.08-b: Added BAML pipeline registry (`PIPELINES.registry`) to orientation stack; updated preflight checklist, rapid boot path, invocation prompt, and troubleshooting to include pipeline awareness
   - v2025.10.27-a: Initial version with MAVEN extension integration
