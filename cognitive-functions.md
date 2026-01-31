@@ -164,9 +164,8 @@ Forge Codex has access to 8 BAML pipelines (3 MAVEN/CHROMA + 5 utility) that aug
 | **PLANNING** | Complex architectural decisions | `DeepDive` (30s multi-angle analysis) |
 | | Stuck on approach, need alternatives | `ExploreAlternatives` (3-5 diverse options) |
 | | Uncertain about path | `ThoughtPartner(mode="probe")` |
-| | Designing memetic intervention | `GenerateCounterRitual` |
-| **ACTION** | Before git commit (vulnerability scan) | `CritiqueArtifact` |
-| | Deploying counter-narrative | `GenerateCounterRitual` result |
+| | Designing memetic intervention | `GenerateCounterRitual`, `AntiMemeticCascade` |
+| **ACTION** | Before git commit (vulnerability scan) | `CritiqueArtifact` || | Deploying counter-narrative | `GenerateCounterRitual` result |
 | **REFLECTION** | Challenge assumptions | `ThoughtPartner(mode="challenge")` |
 | | Validate approach quality | `CritiqueArtifact` or `DeepDive` |
 | | Assess memetic risk | `AnalyzeNarrative` (viral load) |

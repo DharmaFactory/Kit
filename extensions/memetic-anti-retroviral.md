@@ -165,6 +165,61 @@ Paste this block into rapid boot rituals when MAVEN must be spun up quickly.
 ---
 
 ## 11. Integration Hooks
+00169| - **Cognitive Functions:** Treat MAVEN as a specialized Action/Reflection subroutine. Reflection must audit MAVEN activity explicitly.  
+00170| - **Logs:** Add `#containment MAVEN` tag to entries invoking the extension.  
+00171| - **Persona:** Reference MAVEN in Voice & Methods as needed (future work: add short mention to `persona-template.md` once stabilized).
+00172| 
+00173| ---
+00174| 
+00175| ## 12. New Anti-Memetic Routines (Hermeneutic Cascade)
+00176| 
+00177| > Hermeneutic memetics extension: shatter implication loops by exposing contingency horizons.
+00178| > Chain these 5 routines in AntiMemeticCascade pipeline.
+00179| 
+00180| ```
+00181| Tool: HorizonShear
+00182| Inputs: {snippet: string, anchors: string}
+00183| Output:
+00184|   - implied_context: string
+00185|   - rival_horizons: string[]
+00186|   - shear_score: float (0-1 fusion potential)
+00187| ```
+00188| 
+00189| ```
+00190| Tool: ImplicationReversal
+00191| Inputs: {meme: string}
+00192| Output:
+00193|   - reversal_chain: string[]
+00194|   - root_prejudice: string
+00195| ```
+00196| 
+00197| ```
+00198| Tool: GestaltAudit
+00199| Inputs: {perceived: string}
+00200| Output:
+00201|   - ignored_stimuli: string[]
+00202|   - alt_gestalts: string[]
+00203| ```
+00204| 
+00205| ```
+00206| Tool: CircleCollapse
+00207| Inputs: {horizon_a: string, horizon_b: string}
+00208| Output:
+00209|   - fused_third: string
+00210|   - pilot_spec: string
+00211| ```
+00212| 
+00213| ```
+00214| Tool: PrejudiceInoculant
+00215| Inputs: {}
+00216| Output:
+00217|   - mantra: string
+00218|   - audit_prompt: string
+00219| ```
+00220| 
+00169| - **Cognitive Functions:** Treat MAVEN as a specialized Action/Reflection subroutine. Reflection must audit MAVEN activity explicitly.  
+00170| - **Logs:** Add `#containment MAVEN` tag to entries invoking the extension.  
+00171| - **Persona:** Reference MAVEN in Voice & Methods as needed (future work: add short mention to `persona-template.md` once stabilized).
 
 - **Cognitive Functions:** Treat MAVEN as a specialized Action/Reflection subroutine. Reflection must audit MAVEN activity explicitly.  
 - **Logs:** Add `#containment MAVEN` tag to entries invoking the extension.  

@@ -175,5 +175,50 @@ class SynthesisResult {
 
   actionable_insights string[] @description("Concrete takeaways and next steps")
 
-  decision_recommendation string @description("If goal was a decision, what's recommended and why")
+  decision_recommendation string @description("If goal was a decision, what's recommended and why")\n}\n\n// AntiMemeticCascadeInput - Input for hermeneutic cascade pipeline
+class AntiMemeticCascadeInput {
+  snippet string @description("Narrative snippet to analyze")
+  objective string @description("Desired outcome or focus")
+}
+
+// AntiMemeticCascadeOutput - Chained results from 5 anti-memetic routines
+class AntiMemeticCascadeOutput {
+  horizon_shear string @description("HorizonShear result: rival horizons + score")
+  implication_reversal string @description("ImplicationReversal: chain to root prejudice")
+  gestalt_audit string @description("GestaltAudit: ignored stimuli + alt gestalts")
+  circle_collapse string @description("CircleCollapse: fused third + pilot")
+  prejudice_inoculant string @description("PrejudiceInoculant: mantra + audit")
+  overall_assessment string @description("Synthesis: memetic shattered?")
+  viral_load_post float @description("Post-cascade viral load 0-1")
+}
+
+// GAN-Agent Types
+class AgentGeneratorInput {
+  current_agent string @description("Current agent schema/prompt")
+  eval_results string @description("Recent eval scores/history")
+  objective string @description("Target capability")
+}
+
+class AgentGeneratorOutput {
+  schema_delta string @description("Proposed schema changes")
+  prompt_upgrades string @description("Prompt mutations")
+  rationale string @description("Why these upgrades")
+}
+
+class AgentDiscriminatorInput {
+  proposal AgentGeneratorOutput @description("Generator output")
+  baseline string @description("Current agent performance")
+}
+
+class AgentDiscriminatorOutput {
+  is_improvement bool @description("True if better")
+  critique_score float @description("0-1 score")
+  failure_modes string[] @description("Risks")
+  counterexamples string[] @description("Test cases it fails")
+}
+
+class ImprovementCascadeOutput {
+  accepted bool @description("Apply upgrade?")
+  new_agent string @description("Updated agent")
+  cycle_metrics string @description("Delta scores")
 }

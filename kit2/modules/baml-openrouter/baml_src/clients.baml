@@ -10,7 +10,7 @@ client<llm> PolarisAlpha {
   options {
     base_url "https://openrouter.ai/api/v1"
     api_key env.OPENROUTER_API_KEY
-    model "openrouter/polaris-alpha"
+    model "openrouter/sherlock-dash-alpha"
     temperature 0.7
     max_tokens 4000
   }

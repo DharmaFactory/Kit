@@ -1,0 +1,1 @@
+{"timestamp":"2025-11-16T07:10:23.648Z","pipeline":"DeepDive","label":"model-switch-test2","summary":"Verify new model works","input_file":"logs/tmp/test-input.json","output_file":"logs/baml/2025-11-16/model-switch-test2.json","uncertainty":null}

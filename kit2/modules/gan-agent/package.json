@@ -1,0 +1,16 @@
+{
+  "name": "@forge/gan-agent",
+  "version": "0.1.0",
+  "description": "GAN prompt agents for self-improving autonomy",
+  "scripts": {
+    "build": "bamlgen",
+    "autonomy": "tsx src/autonomy_loop.ts",
+    "pipeline": "tsx ../../baml-openrouter/src/index.ts --pipeline"
+  },
+  "dependencies": {
+    "@forge/baml-openrouter": "file:../baml-openrouter"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0"
+  }
+}

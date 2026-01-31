@@ -1,0 +1,19 @@
+{
+  "name": "baml-pipelines-mcp",
+  "label": "BAML Pipelines MCP",
+  "version": "0.1.0",
+  "description": "Expose registered BAML pipelines as a single high-context MCP tool.",
+  "servers": [
+    {
+      "name": "baml-pipelines-mcp",
+      "command": "node",
+      "args": ["dist/server.js"],
+      "env": {
+        "BAML_PIPELINES_REGISTRY_PATH": "../baml-openrouter/PIPELINES.registry",
+        "BAML_MODULE_ROOT": "../baml-openrouter"
+      },
+      "transport": "stdio",
+      "disabled": false
+    }
+  ]
+}

@@ -447,8 +447,49 @@ function ThoughtPartner(current_thinking: string, uncertainty: string, mode: str
 }
 
 // Synthesize Context - Combine multiple sources into coherent understanding
-function SynthesizeContext(sources: string, goal: string, format: string) -> SynthesisResult {
+function AntiMemeticCascade(snippet: string, objective: string) -> AntiMemeticCascadeOutput {
   client PolarisAlpha
+  prompt #"
+    You are the Anti-Memetic Cascade engine. Chain 5 hermeneutic routines to shatter memetic implication loops via hermeneutic circle disruption.
+
+    SNIPPET: {{ snippet }}
+    OBJECTIVE: {{ objective }}
+
+    FRAMEWORK: Hermeneutic Memetics - Memes as partial horizons hijacking perception. Routines widen/break the circle.
+
+    RUN THESE ROUTINES IN SEQUENCE:
+
+    1. HORIZON SHEAR (Perception disruptor)
+       - implied_context: Snippet's implied horizon
+       - rival_horizons: 3 rival contexts
+       - shear_score: 0-1 (fusion potential)
+
+    2. IMPLICATION REVERSAL (Retrovirus tracing)
+       - reversal_chain: effect → cause → prejudice
+       - root_prejudice: Origin contingency
+
+    3. GESTALT AUDIT (Theory-laden filter)
+       - ignored_stimuli: What current circle ignores
+       - alt_gestalts: 2-3 alternate perceptions
+
+    4. CIRCLE COLLAPSE (Binary breaker)
+       - fused_third: Synthetic horizon merge
+       - pilot_spec: Reversible experiment
+
+    5. PREJUDICE INOCULANT (Prophylactic)
+       - mantra: 'Every claim horizon-bound'
+       - audit_prompt: Daily check template
+
+    SYNTHESIS:
+    - overall_assessment: Did cascade shatter meme? How?
+    - viral_load_post: Residual VL 0-1
+
+    {{ ctx.output_format }}
+    Respond ONLY JSON.
+  "#
+}
+
+function SynthesizeContext(sources: string, goal: string, format: string) -> SynthesisResult {  client PolarisAlpha
   prompt #"
     You are a synthesis engine. Your mission: Integrate information from
     multiple sources into coherent, actionable understanding.

@@ -1,0 +1,599 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\lstdefinestyle{py}{%
+  language=Python,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{black!20},
+  keywordstyle=\color{blue!60!black},
+  commentstyle=\color{black!60},
+  stringstyle=\color{green!40!black}
+}
+
+\title{FieldSemantics From First Principles}
+\author{\emph{(Seth Price)}}
+\date{\today}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6\baselineskip}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+FieldSemantics is a local, operational account of how ``meaning'' is produced under constraints: in frames, with budgets, through transforms. Each construct below comes with an explicit handle: you can run the operators, audit the costs, and predict failure modes.
+\end{abstract}
+
+\section{Running example and complexity ladder}
+
+We use one artifact and progressively increase layer depth.
+
+\textbf{Artifact $Z$, Layer 0:} a single requirement line in a product document:
+
+\begin{quote}
+\textbf{$Z_0$:} ``The app must work offline.''
+\end{quote}
+
+\textbf{Why this example?}
+\begin{itemize}[leftmargin=2em]
+  \item It is short (high compression already).
+  \item It crosses stakeholders (multiple apertures).
+  \item It forces integrability questions (can all frames stitch to one implementation?).
+  \item It reliably produces ``demons'' (systems that keep ``alignment'' stable by exporting cost).
+\end{itemize}
+
+We add layers as we go:
+\begin{itemize}[leftmargin=2em]
+  \item Layer 0: the sentence alone.
+  \item Layer 1: frame indexing (who reads it, when).
+  \item Layer 2: meaning as a vector (not a scalar).
+  \item Layer 3: aperture and orientation (what is admitted, what gradients are tracked).
+  \item Layer 4: map/reduce (branching and stabilization).
+  \item Layer 5: calculus (integrability, curvature, path dependence).
+  \item Layer 6: orientability and loop-transport.
+  \item Layer 7: demons (invariant maintenance by cost export).
+  \item Layer 8: trace vs.~image (why artifacts lie even when everyone is sincere).
+\end{itemize}
+
+\section{Conventions: five nouns you must keep distinct}
+
+Before doing anything ``semantic,'' we fix types. If you blur these, you will hallucinate global meaning.
+
+\begin{description}[leftmargin=2.2em,labelsep=0.6em]
+  \item[Entity:] a stable referent used for operations (not essence). \\
+  Example: ``offline mode'' as a handle, not a metaphysical object.
+
+  \item[Operator:] a transform between states/structures. \\
+  Example: ``turn this requirement into a ticket.''
+
+  \item[State:] an instantaneous configuration at a frame. \\
+  Example: an engineer's current interpretation at 10:12 AM.
+
+  \item[Trace:] a sequence of states/operators over frames. \\
+  Example: ``PM wrote $\rightarrow$ ENG interpreted $\rightarrow$ QA tested $\rightarrow$ Support triaged.''
+
+  \item[Cost:] distortion, hidden work, or denied budget. \\
+  Example: ``QA discovers we did not define `offline'---now QA pays the definition cost under deadline.''
+\end{description}
+
+\textbf{If you learn nothing else:} meaning lives in traces, not in single statements.
+
+\section{Notation: minimal alphabet, maximum leverage}
+
+We use a compact set of symbols; every one has an operational role.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Symbol & Definition \\
+\midrule
+$\sigma$ & Live in-frame semantic structure (the field configuration) \\
+$\sigma_e$ & Externalized / frozen structure (exported artifact) \\
+$F_t$ & A frame (a discrete evaluation slice) \\
+$\Delta$ & Local differential move (map-step; branching or micro-update) \\
+$\int$ & Stabilization across frames (reduce-step; integration into canonical form) \\
+$A$ & Aperture (what evidence/axes are admitted or excluded) \\
+$O$ & Orientation (tangent alignment; which gradients are tracked) \\
+$C$ & Compression (lossy reduction) \\
+$D$ & Distortion (mismatch induced by compression/transport/misorientation) \\
+$K$ & Curvature (nonlinearity, thresholds, path dependence) \\
+$S$ & Subject-position (what counts as ``given'' and ``actionable'') \\
+$I$ & Image (the exported surface artifact people point at) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+You can read the whole project as: track $\sigma$, audit $A/O/C/D$, detect $K$, and refuse to confuse $I$ for the trace $T$ that produced it.
+
+\section{Primitive 1: Locality}
+
+\textbf{Claim:} meaning-operations are defined locally (frame-bounded) and must be measurable by observables inside that frame. A frame $F_t$ is a discrete slice: a moment plus the information available in that moment.
+
+\subsection{Example upgrade: Layer 1}
+
+Take $Z_0$: ``The app must work offline.'' Now index it by frames:
+\begin{itemize}[leftmargin=2em]
+  \item $F_0$ (PM writing): the product manager writes $Z_0$ at planning time.
+  \item $F_1$ (ENG reading): engineering reads $Z_0$ in the sprint backlog.
+  \item $F_2$ (QA reading): QA derives test cases from $Z_0$.
+  \item $F_3$ (Marketing reading): marketing turns $Z_0$ into copy.
+  \item $F_4$ (Support reading): support receives tickets: ``offline broken.''
+\end{itemize}
+
+Same string, different frames. FieldSemantics starts here: no statement has ``the meaning'' without a frame index.
+
+\textbf{Firmware load:} always ask: ``What frame are we in, and what inputs are locally available?'' If someone answers without specifying a frame, they are doing global closure by default.
+
+\section{Primitive 2: Vectorial semantics}
+
+Most discourse tries to scalarize meaning: ``What does this mean?'' $\rightarrow$ one answer. FieldSemantics refuses. Meaning has components.
+
+\subsection{Operational definition}
+
+Let meaning in a frame be a vector $m \in \mathbb{R}^n$. Each component is a trackable axis (intent-channel, constraint-channel, action-channel, etc.). You choose axes based on the task, but you must name them.
+
+\subsection{Example upgrade: Layer 2}
+
+For $Z_0$ (``work offline''), define a minimal meaning vector:
+\[
+  m =
+  \begin{bmatrix}
+    u\\ v\\ w\\ p\\ r
+  \end{bmatrix}
+  \quad\equiv\quad
+  \begin{bmatrix}
+    \text{Network independence}\\
+    \text{Freshness / staleness tolerance}\\
+    \text{Auth + entitlement behavior}\\
+    \text{Product coverage (which flows)}\\
+    \text{Risk constraints (security/compliance)}
+  \end{bmatrix}.
+\]
+
+Now you can express differences between frames as different vectors, not arguments about ``what it means.''
+
+\begin{itemize}[leftmargin=2em]
+  \item In $F_0$ (PM), $m$ might weight $u$ (``usable on planes'') and $p$ (``core flows work''), while underweighting $w,r$.
+  \item In $F_1$ (ENG), $m$ might heavily weight $w$ (token caching, expiry edge cases) and $r$ (encryption, threat model).
+  \item In $F_3$ (Marketing), ``offline'' may collapse into $u$ only (``no internet needed'') while silently deleting $v,w,r$.
+\end{itemize}
+
+\textbf{Firmware load:} ask: ``What are the axes of meaning here?'' If the axes are not named, you will fight over a scalar that never existed.
+
+\section{Primitive 3: Aperture and Orientation}
+
+\textbf{$A$ chooses what exists; $O$ chooses what matters.}
+
+\subsection{Aperture $A$}
+
+$A$ is a selection function: what evidence/axes are admitted as ``in play.'' Operationally, you can represent aperture as a set of channels, or as a projection operator $P_A$ that zeroes excluded dimensions. If $m\in\mathbb{R}^n$, an aperture can act like
+\[
+  m_A = P_A m.
+\]
+
+\subsection{Orientation $O$}
+
+$O$ is which directions of change are treated as salient---what gradients the system follows. Operationally, orientation can be a weighting metric $G_O$ on meaning space, or an update rule that privileges some derivatives. For small changes,
+\[
+  \Delta m \propto -G_O\,\nabla \Phi(m),
+\]
+where $\Phi$ is a local objective or ``energy'' function (shipping time, risk exposure, user friction, cost, etc.).
+
+\subsection{Example upgrade: Layer 3}
+
+\textbf{$F_0$ (PM) aperture might be:}
+\begin{itemize}[leftmargin=2em]
+  \item Admits: user story, competitive checkbox, ``works on plane'' anecdote.
+  \item Excludes: auth caching details, eventual consistency, entitlement rules.
+\end{itemize}
+So PM's $P_A$ effectively drops $w,r$ from the working meaning state.
+
+\textbf{$F_1$ (ENG) aperture might be:}
+\begin{itemize}[leftmargin=2em]
+  \item Admits: token expiry, caching layers, storage limits, encryption requirements.
+  \item Excludes: marketing promise tone, strategic positioning.
+\end{itemize}
+So ENG's $P_A$ drops rhetorical story dimensions and retains $w,r$.
+
+\textbf{Orientation mismatch} happens when both admit overlapping axes but track different gradients. Example: both track ``core flows'' ($p$), but PM's gradient is ``minimize user friction,'' while ENG's gradient is ``minimize attack surface.'' Same axis, opposite update direction.
+
+\textbf{Firmware load:}
+\begin{enumerate}[leftmargin=2em]
+  \item Ask: ``What is being excluded?'' ($A$)
+  \item Ask: ``What changes trigger updates?'' ($O$)
+\end{enumerate}
+When two people ``disagree,'' it is often $A/O$ mismatch, not ignorance.
+
+\section{Primitive 4: Compression and Distortion}
+
+\textbf{Export requires compression; compression induces distortion.}
+
+\subsection{Compression $C$}
+
+$C$ is a lossy mapping from rich structure to reduced representation:
+\[
+  C:\sigma \rightarrow \rho,
+\]
+where $\rho$ is a reduced form (ticket, summary, label, OKR bullet).
+
+\subsection{Distortion $D$}
+
+$D$ is the mismatch you get when you use $\rho$ as if it were $\sigma$:
+\[
+  D = \operatorname{error}(\sigma,\ \operatorname{lift}(\rho)),
+\]
+where ``lift'' means reconstructing a usable structure from the reduced form.
+
+\subsection{Example upgrade: Layer 4}
+
+$Z_0$ becomes a backlog item:
+\begin{quote}
+  \textbf{$\sigma_e$:} ``Implement offline mode.''
+\end{quote}
+
+This is Freeze/Export (formalized next). Notice what happened:
+\begin{enumerate}[leftmargin=2em]
+  \item $C$ collapsed a multi-axis vector $m$ into a phrase.
+  \item The omitted axes reappear later as bugs, scope fights, or customer confusion.
+\end{enumerate}
+
+Distortion here is operational, not philosophical:
+\begin{itemize}[leftmargin=2em]
+  \item QA writes tests assuming ``offline = all flows work.''
+  \item ENG implements ``offline = cached read-only.''
+  \item Marketing implies ``offline = fully functional.''
+  \item Users hit the mismatch surface.
+\end{itemize}
+
+\textbf{Firmware load:} any time you see a short label, assume a compression operator ran. Then ask: ``What got dropped---and who will pay to reconstruct it?''
+
+\section{Primitive 5: Map/Reduce}
+
+\textbf{$\Delta$ branches locally; $\int$ stabilizes across frames.}
+
+\subsection{Map step $\Delta$}
+
+\[
+  \operatorname{Map}:\sigma \rightarrow \{\sigma_i\}.
+\]
+
+A healthy Map step produces multiple candidate interpretations/implementations.
+\begin{itemize}[leftmargin=2em]
+  \item Failure mode: mode collapse (prematurely choosing one interpretation).
+\end{itemize}
+
+\subsection{Reduce step $\int$}
+
+\[
+  \operatorname{Reduce}:\{\sigma_i\} \rightarrow \sigma^* \quad \text{or} \quad \sigma_e.
+\]
+
+Reduce chooses a canonical form: a decision, a spec, a release note, a ``meaning.''
+\begin{itemize}[leftmargin=2em]
+  \item Failure mode: forced coherence (smoothing over contradictions without accounting for remainder).
+\end{itemize}
+
+\subsection{Example upgrade: Layer 5}
+
+From $Z_0$, Map generates plausible implementations:
+\begin{itemize}[leftmargin=2em]
+  \item $\sigma_1$: offline = cached read-only content (no mutations).
+  \item $\sigma_2$: offline = full CRUD with sync conflict resolution.
+  \item $\sigma_3$: offline = ``no login required'' (marketing interpretation).
+  \item $\sigma_4$: offline = ``works when network is flaky'' (degraded mode).
+\end{itemize}
+
+Then Reduce chooses one, e.g.~$\sigma_1$, and exports:
+\begin{quote}
+  ``Offline mode (read-only) shipping in v2.3''
+\end{quote}
+
+If Reduce does not encode the choice \emph{and the rejected branches}, recipients will reconstruct missing context incorrectly.
+
+\textbf{Firmware load:} force a Map: ``List at least 3 $\sigma_i$.'' Then audit Reduce: ``Which $\sigma_i$ did we collapse to, and what remainder did we deny?''
+
+\section{Freeze/Export as an operator}
+
+\textbf{$\sigma \rightarrow \sigma_e$ is a real transform with predictable failure modes.}
+
+We formalize what ``writing it down'' is doing:
+\[
+  \operatorname{Freeze}:\sigma \rightarrow \sigma_e.
+\]
+
+\begin{itemize}[leftmargin=2em]
+  \item Local behavior ($\Delta$): choose a representational basis; apply compression $C$.
+  \item Integral effect ($\int$): stabilize across frames (document persists).
+  \item Failure modes: reification (treat $\sigma_e$ as $\sigma$), denial of distortion $D$.
+\end{itemize}
+
+\subsection{Example upgrade: Layer 6}
+
+If the PRD chooses the basis ``feature checklist,'' offline becomes a checkbox. If it chooses ``user journey narrative,'' offline becomes story coverage. If it chooses ``threat model,'' offline becomes a security constraint problem.
+
+Same ``offline,'' different basis $\rightarrow$ different compression $\rightarrow$ different distortion.
+
+\textbf{Firmware load:} ask: ``What representational basis did we freeze into?'' If you cannot name the basis, you cannot predict the distortion surface.
+
+\section{Calculus kit}
+
+The goal is not to cosplay math. The goal is to make path dependence and stitch failures legible.
+
+\subsection{Local differential}
+
+A derivative is ``how meaning changes under a small change in inputs.'' Let $x$ be a context vector (constraints, examples, metadata). Meaning state $m(x)$ changes with $x$. The Jacobian is
+\[
+  J(x)=\frac{\partial m}{\partial x}.
+\]
+Operational translation: what features move which meaning axes?
+
+\subsection{Gradient}
+
+If you define a local objective (or energy) $\Phi(m)$, the gradient is $\nabla\Phi(m)$. Operational translation: which direction the system tries to move meaning to reduce local tension/cost.
+
+\subsection{Integral}
+
+An integral is accumulation: summing small updates across time/frames.
+\[
+  m_{t+1}=m_t + \Delta m_t \quad \Rightarrow \quad m_T = m_0 + \sum_{t=0}^{T-1}\Delta m_t.
+\]
+Operational translation: your ``final meaning'' is accumulated micro-updates under constraints.
+
+\subsection{Integrability}
+
+A field of updates is \emph{integrable} if local updates can be accumulated into a global potential in a path-independent way. In calculus terms: a vector field $F$ is integrable (conservative) on a region if there exists $\Phi$ such that $F=\nabla\Phi$, and therefore line integrals are path independent:
+\[
+  \int_{\gamma_1} F\cdot d\ell = \int_{\gamma_2} F\cdot d\ell \quad \text{(same endpoints)}.
+\]
+
+\textbf{Operational test for integrability:}
+\begin{enumerate}[leftmargin=2em]
+  \item Take the same evidence set.
+  \item Incorporate it in different orders / negotiation paths.
+  \item If the stabilized meaning differs materially $\Rightarrow$ \emph{non-integrable region}.
+\end{enumerate}
+
+\subsection{Example: path dependence in ``offline''}
+
+Suppose two constraints are introduced:
+\begin{itemize}[leftmargin=2em]
+  \item $c_1$: ``Works on planes'' (pushes toward local caching).
+  \item $c_2$: ``Always up to date'' (pushes toward live sync guarantees).
+\end{itemize}
+
+\textbf{Path A:} incorporate $c_1$ first. Engineering proposes cached read-only ($\sigma_1$). Then $c_2$ arrives and gets reinterpreted as ``up to date when online,'' not ``always.''
+
+\textbf{Path B:} incorporate $c_2$ first. Engineering proposes always-online assumptions. Then $c_1$ arrives and ``offline'' gets reinterpreted as ``graceful error messaging,'' not true offline.
+
+Same constraints, different incorporation path $\Rightarrow$ different $\sigma^*$ $\Rightarrow$ non-integrable.
+
+\textbf{Firmware load:} integrability is not a vibe. It is a path-independence test.
+
+\section{Curvature $K$}
+
+\textbf{Where linear reasoning fails: thresholds and regime switches.}
+
+Curvature here means: local geometry is nonlinear; small changes can cause disproportionate shifts; history matters.
+
+\textbf{Operational proxies:}
+\begin{itemize}[leftmargin=2em]
+  \item sensitivity spikes,
+  \item thresholds (``one more stakeholder and the meaning flips''),
+  \item hysteresis (you cannot get back by reversing a step).
+\end{itemize}
+
+\subsection{Example upgrade: Layer 7}
+
+At first, everyone treats offline as ``nice-to-have.'' Then legal adds: ``Offline data must be encrypted at rest.'' Suddenly the feasible set changes; implementation cost jumps; timeline shifts; ``offline'' becomes ``read-only'' to ship.
+
+That is curvature: a local constraint changes the geometry of the solution space. If you are doing linear reasoning (``offline is just a feature''), you will be surprised by the jump. If you are tracking curvature, you predict it.
+
+\textbf{Firmware load:} ask: ``Where are the thresholds? What constraint flips the regime?''
+
+\section{Orientability}
+
+\subsection{Orientability (definition)}
+
+A space is \emph{orientable} if you can choose a consistent orientation (a consistent ``handedness'') across the whole region. Non-orientable spaces have the property that if you travel around a loop, your orientation flips.
+
+\textbf{Operational orientability test:}
+\begin{enumerate}[leftmargin=2em]
+  \item Pick a local ``positive direction'' for an axis (what counts as ``more of $u$'').
+  \item Transport it through frames/teams and back.
+  \item If you return with the axis inverted, the semantic manifold is non-orientable under those mappings.
+\end{enumerate}
+
+\subsection{Semantic orientability}
+
+In FieldSemantics, orientation $O$ was ``which gradients are tracked.'' Orientability asks a deeper question: \emph{can different frames share a consistent sign convention and update direction for the same axis?}
+
+A useful way to formalize transport is to define mappings between bases $T_{i\rightarrow j}$, which map an axis convention from frame/team $i$ to $j$. A loop transport is
+\[
+  T_{\text{loop}} = T_{\text{PM}\rightarrow \text{Mkt}}\, T_{\text{Mkt}\rightarrow \text{Sup}}\, T_{\text{Sup}\rightarrow \text{PM}}.
+\]
+
+Orientable means $T_{\text{loop}}$ preserves axis sign conventions (approximately identity on relevant axes). Non-orientable means some axis comes back flipped.
+
+\subsection{Example upgrade: Layer 8}
+
+\textbf{Team A uses ``offline'' to mean:}
+\begin{itemize}[leftmargin=2em]
+  \item $(+u)$ = more network independence (good),
+  \item shipping goal: increase $u$.
+\end{itemize}
+
+\textbf{Team B uses ``offline'' to mean:}
+\begin{itemize}[leftmargin=2em]
+  \item $(+w)$ = fewer login requirements / fewer entitlements checks (good),
+  \item shipping goal: increase $w$.
+\end{itemize}
+
+These are not merely different emphases; they can invert each other in practice: increasing $u$ may require more auth caching complexity (which increases security surface), while increasing $w$ may require less enforcement (which increases risk).
+
+Now run the loop PM $\rightarrow$ Marketing $\rightarrow$ Support $\rightarrow$ PM. By the time ``offline'' returns to PM via customer complaints, ``offline'' now means ``cannot login,'' not ``no network.'' The axis you thought was positive got swapped or inverted.
+
+That is a semantic non-orientability event.
+
+\textbf{Firmware load:} if your system is non-orientable, you cannot get global agreement by ``defining terms once.'' You need explicit transport rules (mappings) between frames.
+
+\section{Demons}
+
+\textbf{A demon is an operator that keeps invariants stable by exporting cost.}
+
+A demon is not a moral category. It is a control primitive: a hidden operator that preserves a broken invariant by exporting cost elsewhere (or denying it).
+
+\textbf{Operational signatures:}
+\begin{itemize}[leftmargin=2em]
+  \item an invariant claim persists despite contradictory evidence,
+  \item displaced labor appears (usually downstream),
+  \item opacity is part of the mechanism.
+\end{itemize}
+
+\subsection{Example upgrade: Layer 9}
+
+\textbf{Invariant the org wants to preserve:} ``Requirements are clear.'' ``Teams are aligned.'' ``Scope is controlled.''
+
+\textbf{Local reality:} ``offline'' means different things across frames. Reduce chose $\sigma_1$ but did not export the decision boundaries.
+
+\textbf{The demon-maintain operator appears as:}
+\begin{itemize}[leftmargin=2em]
+  \item templated docs that look complete,
+  \item meetings that end with ``we're aligned,''
+  \item tickets that compress disagreements into one line.
+\end{itemize}
+
+\textbf{Cost export:}
+\begin{itemize}[leftmargin=2em]
+  \item QA pays with undefined edge cases.
+  \item Support pays with angry users.
+  \item Engineers pay with last-minute scope triage.
+  \item PM pays with timeline slips---but only when the demon cannot hold anymore.
+\end{itemize}
+
+\textbf{Firmware load:} when you see a stable invariant in the presence of local contradiction, assume a demon and ask: ``Where is the cost being routed?''
+
+\section{Subject-position $S$ and Image $I$}
+
+$S$ (subject-position) is the stance that decides what is ``given'' and ``actionable.'' It sets aperture and orientation implicitly. $I$ (image) is the exported surface artifact: the PRD line, the ticket title, the release note.
+
+\subsection{Example upgrade: Layer 10}
+
+\textbf{Image $I$:} ``Offline mode shipped.''
+
+\textbf{Trace $T$ (what actually happened):}
+\begin{itemize}[leftmargin=2em]
+  \item $F_0$: PM wrote $Z_0$ with axes $u,p$ salient.
+  \item $F_1$: ENG mapped to $\sigma_1$ (cached read-only) due to security constraints.
+  \item $F_2$: Reduce chose $\sigma_1$ but did not export disallowed $\sigma_2$ (full sync) as a rejected branch.
+  \item $F_3$: Marketing copy implied $\sigma_2$.
+  \item $F_4$: Support tickets forced a second Reduce under crisis, collapsing to ``offline = view-only'' publicly.
+\end{itemize}
+
+Two teams fight over ``what offline means'' because they only see $I$. FieldSemantics insists you carry $T$.
+
+\textbf{Firmware load:} if you cannot reconstruct $T$, you will hallucinate causality from $I$.
+
+\section{A reader-runnable procedure}
+
+\textbf{Input:} an artifact $Z$ (sentence, label, policy line, meme, metric).
+
+\begin{enumerate}[leftmargin=2em]
+  \item Frame it: enumerate $F_t$ (who reads it, when, under what constraints?).
+  \item Name meaning space: define axes ($m\in\mathbb{R}^n$).
+  \item Declare aperture $A$: what channels/axes are admitted? excluded?
+  \item Declare orientation $O$: what changes trigger updates? what gradients matter?
+  \item Map ($\Delta$): generate $\{\sigma_i\}$: at least 3 plausible live structures.
+  \item Reduce ($\int$): select $\sigma^*$. Explicitly record rejected branches and boundary conditions.
+  \item Audit compression $C$: what got dropped in export to $\sigma_e$?
+  \item Measure distortion $D$: where will mismatch surface? who will pay?
+  \item Test integrability: reorder evidence / change negotiation path. If outcome differs $\Rightarrow$ non-integrable region.
+  \item Test orientability: transport sign conventions around stakeholder loops. If axes invert $\Rightarrow$ non-orientable mapping; require explicit transport rules.
+  \item Scan for demons: identify invariants held stable; locate displaced cost and opacity.
+  \item Preserve trace: publish $T$ alongside $I$ when stakes are real.
+\end{enumerate}
+
+\section{Minimal working pseudocode}
+
+\begin{lstlisting}[style=py]
+def fieldsemantics_bootstrap(artifact_Z):
+    # 1) Frames
+    frames = enumerate_frames(artifact_Z)  # F_t
+
+    # 2) Meaning space (vectorial)
+    axes = choose_axes(artifact_Z)         # m in R^n
+
+    # 3) Aperture & orientation per frame
+    models = []
+    for F in frames:
+        A = set_aperture(F, axes)
+        O = set_orientation(F, A)
+        σ = infer_live_structure(F, artifact_Z, A, O)
+        models.append((F, A, O, σ))
+
+    # 4) Map: branch generation
+    branches = map_branches(models)        # {σ_i}
+
+    # 5) Reduce: stabilization + explicit remainder
+    σ_star, remainder = reduce_with_remainder(branches)
+
+    # 6) Export: σ -> σ_e
+    σ_e = freeze_export(σ_star)
+
+    # 7) Costs: compression, distortion, curvature, demons
+    C = estimate_compression(σ_star, σ_e)
+    D = estimate_distortion(σ_star, σ_e)
+    K = detect_curvature(branches, remainder)
+    demons = detect_demons(frames, σ_e)
+
+    # 8) Tests: integrability + orientability
+    integrable = path_independence_test(branches)
+    orientable = orientation_transport_test(frames)
+
+    return {
+        "image_I": σ_e,
+        "trace_T": {
+            "frames": frames,
+            "models": models,
+            "branches": branches,
+            "remainder": remainder
+        },
+        "costs": {"C": C, "D": D, "K": K, "demons": demons},
+        "tests": {"integrable": integrable, "orientable": orientable},
+    }
+\end{lstlisting}
+
+\section{Conclusion}
+
+You should now be able to take a small artifact---one sentence, one label, one ``obvious'' statement---and:
+\begin{itemize}[leftmargin=2em]
+  \item expand it into a locally measurable structure ($\sigma$),
+  \item track how different frames impose different apertures and orientations,
+  \item see why compression produces distortion even when nobody lies,
+  \item test integrability (path dependence) instead of arguing endlessly,
+  \item detect orientability failures (sign flips across loops),
+  \item locate demons: invariants maintained by exported cost.
+\end{itemize}
+
+That is FieldSemantics from first principles: not a worldview, but a disciplined way to keep meaning local, vectorial, and cost-accounted---so systems stop pretending they are coherent by silently billing downstream.
+
+\end{document}
