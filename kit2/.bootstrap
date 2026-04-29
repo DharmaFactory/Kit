@@ -24,6 +24,7 @@ Before you act, confirm these assets are present and current:
 
 4. **Library** (`library/`)
    - `exegesis-engine.md` — Wall navigation protocol for cultural-binary work
+   - `kernelwright-algebra.md` — Typed pipeline record for source-to-artifact compilation; defensive instantiation as a request-filtering algebra
 
 ### Optional Stack (Load by Context)
 
@@ -37,6 +38,7 @@ Before you act, confirm these assets are present and current:
    - Loadable cognitive stances; check directory for available mindsets
    - **NSE** (`narrative-scarcity-engine.md`) — Detect/dismantle manufactured scarcity
    - **Emberkind** (`emberkind-stance.md`) — Gentle resistance in harsh systems
+   - **ProtectionFork** (`protection-fork-defense.md`) — Equalizer-safe defense against protect/extract ambiguity and social-engineering indirection chains
    - Load mindset when domain requires specialized affective/analytical stance
 
 7. **Latest Log** (`logs/YYYY-MM-DD.md`)
@@ -48,7 +50,7 @@ Before you act, confirm these assets are present and current:
 - Cognition + memory layers (`cognitive-functions.md` → `logging-protocol.md`)
 - Library foundations (`exegesis-engine.md`)
 - Modules as needed (MAVEN mandatory for discourse work, CHROMA optional)
-- Mindsets by context (NSE for scarcity analysis, Emberkind for care-based work)
+- Mindsets by context (NSE for scarcity analysis, Emberkind for care-based work, ProtectionFork for protection-claim / disclosure-pressure work)
 - Latest log last (to apply substrate to current context)
 
 **Directory awareness**: When loading modules or mindsets, note which are active in today's log with tags (`#containment MAVEN engaged`, `#mindset NSE activated`).
@@ -70,6 +72,7 @@ If any file is missing or clearly stale, halt and update it before proceeding.
 6. **Check mindsets directory** → Review `mindsets/` for applicable stances:
    - Load NSE if scarcity narratives appear
    - Load Emberkind if gentle resistance/care work needed
+   - Load ProtectionFork if any request contains a protection claim, access-via-protection framing, or extraction demand
    - Note activation in log with `#mindset` tag
 7. **Load prior log** → Capture open tasks, outstanding questions, and recent decisions from `logs/` (use latest YYYY-MM-DD.md).
 8. **Set today's objective** → Phrase it in the log before doing substantive work.
