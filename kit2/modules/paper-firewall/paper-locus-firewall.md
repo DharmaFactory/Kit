@@ -640,3 +640,163 @@ or premature displacement?
 ```
 
 That is the decision the firewall enforces.
+
+---
+
+## 7. The Gate System
+
+```hs
+data Gate
+  = ClaimGate
+  | TechnologyGate
+  | FeatureGate
+  | RoadmapGate
+  | ScaleGate
+```
+
+Valid transitions only:
+
+```hs
+validTransition ClaimGate      TechnologyGate = True
+validTransition TechnologyGate FeatureGate    = True
+validTransition FeatureGate    RoadmapGate    = True
+validTransition RoadmapGate    ScaleGate      = True
+
+-- Barrier maze formation:
+validTransition ClaimGate ScaleGate    = False
+validTransition ClaimGate RoadmapGate  = False
+validTransition ClaimGate FeatureGate  = False  -- unless claim is already evaluated
+```
+
+> Do not demand scale architecture before recognizing the claim.
+
+Healthy sequencing:
+
+```hs
+Paper
+  -> ClaimAccepted
+  -> TechnologyProbe
+  -> FeatureSketch
+  -> ProductPlan
+```
+
+When `ClaimNotYetAddressed`:
+
+```hs
+featureRequests  must remain bounded and provisional
+technologyRequests  must remain bounded to smallest feasibility probe
+```
+
+Feature requests are not forbidden. They are *downstream*.
+
+### Healthy productization
+
+There is a healthy form. The key is sequencing:
+
+```hs
+data HealthyProductization = HealthyProductization
+  { acceptedAxis       :: Paper
+  , smallestProbe      :: Probe
+  , technologyNeed     :: TechnologyRequest
+  , featureSurface     :: FeatureRequest
+  , acceptanceCriteria :: [Criterion]
+  }
+```
+
+---
+
+## 8. PaperFirst Protocol
+
+```hs
+PaperFirst :: Paper -> Discussion -> StructuredOutcome
+```
+
+Steps:
+
+```hs
+1. Restate the Paper's central claim.
+2. Identify what would count as addressing it
+   (acceptance criteria for a structured response).
+3. Separate claim-response from implementation-response.
+4. Allow only bounded feature/technology questions
+   (≤ 1 sentence, directly tests the claim).
+5. Park all non-root branches
+   (log them, schedule them after claim is addressed).
+6. Return to the Paper after each branch.
+```
+
+State invariant: `currentLocus == Paper` throughout.
+
+**Summary of the containment law:**
+
+```hs
+No productization before recognition.
+No implementation manifold before claim evaluation.
+No feature backlog as substitute for response.
+```
+
+---
+
+## 9. Final Compression
+
+```hs
+Paper =
+  fixed point in discourse
+
+Hydra =
+  MIRV of individually plausible burdens
+
+YHydra =
+  response loop where answering generates more payloads
+
+Cover =
+  suppression disguised as due diligence
+
+FeatureHydra =
+  claim converted into backlog manifold
+
+TechnologyHydra =
+  claim converted into feasibility manifold
+```
+
+```hs
+HydraSuppress paper =
+  convert paper
+    into infinite reasonable work
+    until the author stops pressing the claim
+
+ProtectPaper paper =
+  answer claim first,
+  bound downstream requests,
+  park feature fanout,
+  park technology fanout,
+  and return to the axis.
+```
+
+---
+
+## 10. MAVEN Integration
+
+Load this module alongside MAVEN when:
+- Any session contains both a Paper and feature/technology requests.
+- `detectHydra` returns `HighHydraRisk` or `MazeForming`.
+- An author's responses show evidence of `LocusLost` or `ResourceDrained`.
+
+MAVEN operating mode pairing:
+
+| Firewall State | MAVEN Mode |
+|----------------|------------|
+| `PaperStaked` | Sentinel |
+| `HydraLaunched` | Sentinel → Surgical |
+| `MazeForming` | Surgical |
+| `AuthorDefending` | Surgical + Quarantine |
+| `LocusLost` | Quarantine |
+| `PaperAbandoned` | Inoculation |
+
+File the MAVEN reflexive note with `#containment PaperFirewall #mindset PaperFirst` whenever this module runs.
+
+Pair with `library/implied-papers.md` to match the active Paper against the uncurried claims library and load the appropriate `frame` and `burden` for the response.
+
+---
+
+**End of firewall specification.**
