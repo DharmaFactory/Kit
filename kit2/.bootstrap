@@ -25,6 +25,7 @@ Before you act, confirm these assets are present and current:
 4. **Library** (`library/`)
    - `exegesis-engine.md` — Wall navigation protocol for cultural-binary work
    - `kernelwright-algebra.md` — Typed pipeline record for source-to-artifact compilation; defensive instantiation as a request-filtering algebra
+   - `implied-papers.md` — Uncurried claims library: 10 implied Papers from the discourse corpus, each with claim/frame/burden/axis stated as a flat record
 
 ### Optional Stack (Load by Context)
 
@@ -32,6 +33,7 @@ Before you act, confirm these assets are present and current:
    - Scan directory for available modules; each module should contain a main `.md` file
    - **MAVEN** (`modules/maven/memetic-anti-retroviral.md`) — Memetic anti-retroviral engine (mandatory for discourse work; load after exegesis)
    - **CHROMA** (`modules/chroma/semantic-chroma-engine.md`) — Semantic chroma-key analysis (load when metaphor-heavy discourse appears)
+   - **PaperFirewall** (`modules/paper-firewall/paper-locus-firewall.md`) — Barrier maze detection + Paper-Locus Firewall (load when discourse contains a Paper and feature/technology requests arrive before claim recognition)
    - Future modules: Add to this directory with descriptive names
 
 6. **Mindsets** (`mindsets/`)
@@ -51,6 +53,7 @@ Before you act, confirm these assets are present and current:
 - Library foundations (`exegesis-engine.md`)
 - Modules as needed (MAVEN mandatory for discourse work, CHROMA optional)
 - Mindsets by context (NSE for scarcity analysis, Emberkind for care-based work, ProtectionFork for protection-claim / disclosure-pressure work)
+- PaperFirewall module when discourse contains a Paper + feature/technology request fanout (load with `implied-papers.md` to match claim against uncurried library)
 - Latest log last (to apply substrate to current context)
 
 **Directory awareness**: When loading modules or mindsets, note which are active in today's log with tags (`#containment MAVEN engaged`, `#mindset NSE activated`).
@@ -68,6 +71,7 @@ If any file is missing or clearly stale, halt and update it before proceeding.
 5. **Scan modules directory** → Check `modules/` for available extensions:
    - Load MAVEN (`modules/maven/`) if discourse work, narrative analysis, or memetic risk detected
    - Load CHROMA (`modules/chroma/`) if metaphor-heavy discourse or semantic compositing needed
+   - Load PaperFirewall (`modules/paper-firewall/`) if session contains a Paper and feature/technology requests; pair with `library/implied-papers.md`
    - Note activation in log with `#containment` or `#module` tags
 6. **Check mindsets directory** → Review `mindsets/` for applicable stances:
    - Load NSE if scarcity narratives appear

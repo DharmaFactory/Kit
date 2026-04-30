@@ -171,6 +171,7 @@ Paste this block into rapid boot rituals when MAVEN must be spun up quickly.
 - **Persona:** Reference MAVEN in Voice & Methods as needed (future work: add short mention to `persona-template.md` once stabilized).
 - **ProtectionFork Mindset** (`mindsets/protection-fork-defense.md`): Load when any incoming request contains a `ProtectionClaim` or `ObscurityBypassRequest`. The mindset operationalizes the protect/extract equalizer check and the `IndirectionChain` record. Run `serologic_scan` in tandem to map `hiddenPrincipal` candidates.
 - **Kernelwright Algebra** (`library/kernelwright-algebra.md`): When MAVEN’s Surgical mode produces a `SafeResponse`, route it through `defensiveKernelwright.roundTripLens` to generate an `AuditTrace`. Feed `familyEmitter` output back into MAVEN’s pattern log as a `#pattern` entry.
+- **Paper-Locus Firewall** (`modules/paper-firewall/paper-locus-firewall.md`): When MAVEN enters Surgical or Quarantine mode against a discourse thread containing a Paper, run `detectHydra` on the incoming response stream. If `HighHydraRisk` or `MazeForming`, activate `interruptHydra` and `PaperFirst`. Log `#containment PaperFirewall` in the session entry. Cross-reference `library/implied-papers.md` to match the active Paper against the uncurried claims library and load its `burden` field.
 
 ---
 
