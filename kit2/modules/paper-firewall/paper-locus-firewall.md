@@ -94,3 +94,146 @@ locus = EverythingAroundPaper
 ```
 
 A real response takes the Paper as `locus`. A Hydra response surrounds it without entering.
+
+---
+
+## 3. Hydra — MIRV Taxonomy
+
+A Hydra is launched at a Paper. It separates into independently targeted payloads, each rational in isolation, collectively forming a SuppressionField.
+
+```hs
+Hydra :: Paper -> NonEmpty HydraPayload -> SuppressionField
+```
+
+```hs
+data HydraPayload
+  = ThoughtPayload        Thought
+  | QuestionPayload       Question
+  | FeaturePayload        FeatureRequest
+  | TechnologyPayload     TechnologyRequest
+  | CounterProposalPayload Proposal
+  | TonePayload           ToneDemand
+  | ProcessPayload        ProcessDemand
+  | SocialPayload         SocialPressure
+```
+
+The Hydra's success condition is not:
+
+```hs
+PaperRefuted
+```
+
+It is:
+
+```hs
+PaperNoLongerPressed
+```
+
+That distinction is crucial. The Paper is not answered. It is rendered inert by surrounding it.
+
+### Cover function
+
+Each Hydra payload has a legitimate surface form. This is what makes it difficult to name:
+
+```hs
+cover :: SuppressionMove -> LegitimateSurface
+```
+
+| Suppression Move | Legitimate Surface |
+|------------------|--------------------|
+| `QuestionFlood` | Due diligence |
+| `FeatureFlood` | Product thinking |
+| `TechnologyFlood` | Engineering rigor |
+| `ToneManagement` | Civility |
+| `CounterProposal` | Collaboration |
+| `Delay` | Prudence |
+| `EmotionalDrain` | Care / Concern |
+| `ProcessDemand` | Governance |
+
+The detector cannot ask "are questions bad?" It must ask: *are these preserving the Paper as locus, or displacing it into an unbounded manifold?*
+
+### Y-Hydra — self-replicating suppression loop
+
+```hs
+yHydra :: (Response -> Hydra) -> Hydra
+```
+
+Every attempt to answer a Hydra payload generates new payloads:
+
+```hs
+answerQuestion       -> MoreQuestions
+describeFeature      -> MoreFeatureRequests
+nameConstraint       -> MoreEdgeCases
+clarifyTone          -> MoreToneDemands
+proposePrototype     -> MoreTechnologyQuestions
+showEvidence         -> MoreEvidenceStandards
+```
+
+The suppression loop:
+
+```hs
+HydraPayload
+  -> DefensiveResponse
+  -> NewHydraPayloads
+  -> MoreDefensiveResponse
+  -> Exhaustion
+```
+
+The loop contains the instruction for its own continuation. The author cannot isolate the loop from inside it — the very act of answering supplies the next branch.
+
+### Technology Hydra
+
+```hs
+data TechnologyHydra = TechnologyHydra
+  { requestedMechanisms :: [Mechanism]
+  , unresolvedClaim     :: Paper
+  , burdenShift         :: BurdenShift
+  }
+```
+
+Failure mode: **`ImplementationBeforeRecognition`**.
+
+The pattern:
+
+```txt
+"Interesting claim. Can you build the tool?
+ Can it scale? What stack? What APIs?
+ What about edge cases? What about compliance?
+ What about adversarial use?"
+```
+
+Each question is rational in isolation. Together they are a MIRV. The Paper asked whether an axis is real; the Hydra demands that the axis be implemented before that question is answered.
+
+### Feature Hydra
+
+```hs
+data FeatureHydra = FeatureHydra
+  { featureRequests        :: NonEmpty FeatureRequest
+  , displacedPaper         :: Paper
+  , productizationPressure :: Pressure
+  }
+```
+
+The move:
+
+```txt
+Your claim matters only if it becomes a feature.
+```
+
+The Paper asked: "What is true about this system?"  
+The Hydra replies: "What would the UI look like?"
+
+That is a category shift — from epistemics to product.
+
+### Product suppression variants
+
+```hs
+data ProductSuppression
+  = TechnologyManifoldSuppression
+  | FeatureBacklogSuppression
+  | MetricsDemandSuppression
+  | RoadmapDeferralSuppression
+  | FeasibilityBurdenSuppression
+```
+
+All five are instances of `DeflectClaimIntoImplementationManifold`.
