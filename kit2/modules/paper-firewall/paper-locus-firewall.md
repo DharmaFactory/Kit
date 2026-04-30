@@ -496,3 +496,147 @@ Hydra: "Can you make a feature to detect that?
 Containment: "That is the phenomenon itself.
               We will name it first, then define a bounded detector."
 ```
+
+---
+
+## 6. The Counter-Kernel — Firewall Operations
+
+### HydraInterrupt pipeline
+
+```hs
+HydraInterrupt
+  = NameLocus
+  -> ClassifyPayload
+  -> BoundBranch
+  -> ExtractRootRelevantPart
+  -> ParkRemainder
+  -> ReturnToPaper
+```
+
+### Primary interrupt operation
+
+```hs
+interruptHydra
+  :: Paper
+  -> HydraPayload
+  -> PaperDiscussionState
+  -> PaperDiscussionState
+```
+
+### Feature payload interrupt
+
+```hs
+interruptHydra paper (FeaturePayload f) state =
+  state
+    |> record "feature request acknowledged"
+    |> extractMinimalFeatureImplication f
+    |> parkFullBacklog f
+    |> returnTo paper
+```
+
+### Technology payload interrupt
+
+```hs
+interruptHydra paper (TechnologyPayload t) state =
+  state
+    |> record "technology question acknowledged"
+    |> defineSmallestFeasibilityProbe t
+    |> parkImplementationManifold t
+    |> returnTo paper
+```
+
+### Question payload interrupt
+
+```hs
+interruptHydra paper (QuestionPayload q) state =
+  state
+    |> classifyQuestion q
+    |> if rootRelevant q
+         then answerBriefly q >> returnTo paper
+         else park q >> returnTo paper
+```
+
+### Equalize — the safe containment operation
+
+```hs
+equalize
+  :: Paper
+  -> HydraPayload
+  -> MinimalRootRelevantResponse
+```
+
+The equalizer answers only the part of the payload that advances the Paper, without entering the Hydra manifold.
+
+```hs
+equalize paper payload =
+  minimalPartThat
+    (advancesPaper paper)
+    (doesNotOpenManifold)
+    payload
+```
+
+Containment phrases:
+
+```txt
+"That is a valid productization question, but it comes after the claim is evaluated.
+ For now, the minimal feature implication is X."
+
+"That technology concern is real, but the current question is
+ whether the axis exists. The smallest feasibility probe is Y."
+
+"That edge case should be parked.
+ It does not change the central claim unless Z."
+
+"This is a valid downstream question, not a refutation of the Paper."
+```
+
+That last phrase is one of the most effective containment moves in the firewall.
+
+### PaperDiscussionState — invariant record
+
+```hs
+data PaperDiscussionState = PaperDiscussionState
+  { paper          :: Paper
+  , addressed      :: [ClaimResponse]
+  , parkedBranches :: [Branch]
+  , openQuestions  :: [BoundedQuestion]
+  , currentLocus   :: Locus
+  }
+```
+
+**Invariant:** `currentLocus == Paper` unless explicitly shifted with justification and a return trigger.
+
+### The deepest distinction
+
+A feature request can honor a Paper:
+
+```hs
+Feature = Paper made usable
+```
+
+or bury it:
+
+```hs
+Feature = Paper converted into unpaid labor
+```
+
+A technology request can test a Paper:
+
+```hs
+Technology = Paper made probeable
+```
+
+or defer it:
+
+```hs
+Technology = Paper trapped in feasibility debt
+```
+
+The system must ask:
+
+```txt
+Is this downstream concretization,
+or premature displacement?
+```
+
+That is the decision the firewall enforces.
