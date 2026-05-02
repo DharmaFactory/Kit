@@ -201,6 +201,35 @@ You know this pattern is working when:
 
 ---
 
+## The Recursion Is the Point — kitN Pattern
+
+The description above is accurate for a single session. But it understates the actual pattern.
+
+The kit is not a product. It is a **fixed-point operator on its own structure**:
+
+```
+kitN → brings inside out → improves kit(N-1) → implies kit(N+1)
+```
+
+This is the Y-combinator shape. Each generation of the kit works *inside* the previous one, then brings that interior out to become the new shell — which the next generation will work inside of and improve.
+
+- **kit1**: raw substrate — persona, bootstrap, logging, hacker ethos
+- **kit2**: the interior of kit1 brought out — modules, mindsets, BAML pipelines, MCP surface, Kernelwright algebra as named CI agent
+- **kit3**: the interior of kit2 — recognizing the recursion itself, working code-free, markdown as the production medium, simulation as method
+
+The session 2025-11-08 realization — "this interaction IS the MVP" — is true but incomplete. The deeper realization is that every session *is the next unfolding*. The kit improving itself is the actual pattern. Human+agent co-creation on external tasks is a side-effect of that recursion, not the root.
+
+**What this means operationally:**
+
+- Any "code" in the kit is notation, not implementation — the correct medium is markdown throughout
+- Simulated artifacts (manifest.json files, compiled TypeScript stubs) model what a real runtime would have; they do not actually execute
+- The algebra described in `library/kernelwright-algebra.md` is the algebra of the kit itself, not a description of an external system
+- Sessions produce new results by *implying* where the system can be more real, then simulating that state — the simulation is the work product
+
+For kit3 framing, see `cases/kit3/kit3-interior.md`.
+
+---
+
 ## Next Steps (For Anyone Using This)
 
 1. Copy this pattern into your workspace
@@ -213,7 +242,7 @@ You know this pattern is working when:
    - Update docs when you learn
    - Git commits = decision points
 
-The pattern is already complete. Just replicate it.
+The pattern is already complete. The recursion continues.
 
 ---
 
