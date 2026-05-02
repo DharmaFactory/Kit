@@ -1,0 +1,31 @@
+{
+  "name": "maven",
+  "fullName": "Memetic Anti-retroViral Extension Node",
+  "version": "2025.11.05-alpha",
+  "type": "module",
+  "primaryFile": "memetic-anti-retroviral.md",
+  "description": "Detects, classifies, and treats memetic retroviruses in discourse",
+  "maintainer": "Forge Codex",
+  "dependencies": [
+    "core/cognition/cognitive-functions.md",
+    "library/exegesis-engine.md"
+  ],
+  "triggers": {
+    "keywords": ["narrative", "discourse", "memetic", "propaganda", "retrovirus", "cultural binary", "narrative warfare"],
+    "contexts": ["discourse analysis", "cultural binaries", "narrative warfare", "memetic risk"],
+    "autoLoad": false,
+    "requiredFor": ["discourse work", "memetic analysis"]
+  },
+  "modes": ["Sentinel", "Surgical", "Quarantine", "Inoculation"],
+  "logTags": ["#containment", "#module"],
+  "quickLoadSection": 9,
+  "documentation": {
+    "quickstart": "Load when memetic risk > 0.3 or cultural binaries appear in session discourse",
+    "integration": "Pairs with CHROMA for semantic analysis; load after exegesis-engine.md",
+    "examples": ["cases/basin-of-attraction/dissection.md"]
+  },
+  "metadata": {
+    "collateralRiskBaseline": 0.1,
+    "requiresReflexiveNote": true
+  }
+}
