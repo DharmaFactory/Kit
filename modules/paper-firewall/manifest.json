@@ -1,0 +1,30 @@
+{
+  "name": "paper-firewall",
+  "fullName": "Paper-Locus Firewall",
+  "version": "2026.04.29-alpha",
+  "type": "module",
+  "primaryFile": "paper-locus-firewall.md",
+  "description": "Barrier maze detection and Paper-Locus Firewall: prevents feature/technology requests from suppressing unevaluated Papers",
+  "maintainer": "Forge Codex",
+  "dependencies": [
+    "library/kernelwright-algebra.md",
+    "library/implied-papers.md",
+    "core/cognition/cognitive-functions.md"
+  ],
+  "triggers": {
+    "keywords": ["paper", "claim", "barrier", "suppression", "feature request", "hydra", "fanout"],
+    "contexts": ["discourse contains a Paper", "feature requests arriving before claim recognition", "technology requests before root claim addressed"],
+    "autoLoad": false,
+    "requiredFor": ["paper protection", "barrier maze containment"]
+  },
+  "modes": ["Detection", "Containment", "Firewall", "Recovery"],
+  "logTags": ["#containment", "#paper-firewall"],
+  "documentation": {
+    "quickstart": "Load when session discourse contains a Paper and feature/technology requests are arriving before the claim is addressed. Pair with library/implied-papers.md to match against known claim library.",
+    "integration": "Works with Kernelwright forkbomb detector; load after core stack and library/kernelwright-algebra.md"
+  },
+  "metadata": {
+    "requiresReflexiveNote": true,
+    "collateralRiskBaseline": 0.05
+  }
+}

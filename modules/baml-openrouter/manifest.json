@@ -1,0 +1,40 @@
+{
+  "name": "baml-openrouter",
+  "fullName": "BAML OpenRouter Pipeline Runtime",
+  "version": "2025.11.08-a",
+  "type": "module",
+  "primaryFile": "README.md",
+  "description": "BAML-based pipeline runtime exposing 8 named reasoning pipelines via OpenRouter LLM API",
+  "maintainer": "Forge Codex",
+  "dependencies": [
+    "core/identity/persona-template.md",
+    "core/cognition/cognitive-functions.md"
+  ],
+  "triggers": {
+    "keywords": ["pipeline", "DeepDive", "ThoughtPartner", "ExploreAlternatives", "CritiqueArtifact", "SynthesizeContext", "AnalyzeNarrative", "GenerateCounterRitual", "PerformSerologicScan", "SelfPrompt"],
+    "contexts": ["extended reasoning", "pipeline invocation", "deep analysis", "adversarial review"],
+    "autoLoad": false,
+    "requiredFor": ["BAML pipeline execution", "typed LLM calls"]
+  },
+  "modes": [
+    "ThoughtPartner",
+    "DeepDive",
+    "ExploreAlternatives",
+    "CritiqueArtifact",
+    "SynthesizeContext",
+    "AnalyzeNarrative",
+    "GenerateCounterRitual",
+    "PerformSerologicScan"
+  ],
+  "logTags": ["#module", "#pipeline"],
+  "documentation": {
+    "quickstart": "Run: cd modules/baml-openrouter && npm run pipeline -- --pipeline <Name> --input '<JSON>'. Always provide rich context in pipeline inputs.",
+    "integration": "Pairs with MAVEN/CHROMA for analysis pipelines; exposed as MCP tool via baml-pipelines-mcp module",
+    "examples": ["cases/agent-registry/plan.md"]
+  },
+  "metadata": {
+    "requiresReflexiveNote": false,
+    "pipelineCount": 8,
+    "requiresEnvVar": "OPENROUTER_API_KEY"
+  }
+}

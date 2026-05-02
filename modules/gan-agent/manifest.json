@@ -1,0 +1,31 @@
+{
+  "name": "gan-agent",
+  "fullName": "GAN Prompt Autonomy Agent",
+  "version": "0.1.0",
+  "type": "module",
+  "primaryFile": "src/autonomy_loop.ts",
+  "description": "GAN-style autonomy loop: generator mutates prompts, discriminator evaluates improvement, loop self-refines",
+  "maintainer": "Forge Codex",
+  "dependencies": [
+    "modules/baml-openrouter/manifest.json"
+  ],
+  "triggers": {
+    "keywords": ["autonomy", "self-improvement", "GAN", "loop", "self-prompt", "mutation", "discriminator"],
+    "contexts": ["autonomy probe", "self-refinement", "prompt optimization", "long-running autonomous task"],
+    "autoLoad": false,
+    "requiredFor": ["autonomy loop execution"]
+  },
+  "modes": ["Mock", "Live"],
+  "logTags": ["#module", "#autonomy"],
+  "documentation": {
+    "quickstart": "Run: cd modules/gan-agent && npm run autonomy \"<task>\" <cycles>. Uses mock LLM by default. Set OPENROUTER_API_KEY and connect to baml-openrouter for live runs.",
+    "integration": "Depends on baml-openrouter for live LLM calls; logs to logs/autonomy/",
+    "status": "mock LLM — real BAML integration pending"
+  },
+  "metadata": {
+    "requiresReflexiveNote": false,
+    "requiresEnvVar": "OPENROUTER_API_KEY",
+    "llmMode": "mock",
+    "activeWorkItem": "Connect to baml-openrouter BAML client for live runs"
+  }
+}

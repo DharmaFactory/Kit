@@ -1,0 +1,31 @@
+{
+  "name": "baml-pipelines-mcp",
+  "fullName": "BAML Pipelines MCP Server",
+  "version": "0.1.0",
+  "type": "module",
+  "primaryFile": "mcp.json",
+  "description": "Compiled MCP server that exposes registered BAML pipelines as a single high-context MCP tool surface",
+  "maintainer": "Forge Codex",
+  "dependencies": [
+    "modules/baml-openrouter/PIPELINES.registry",
+    "modules/baml-openrouter/manifest.json"
+  ],
+  "triggers": {
+    "keywords": ["MCP", "tool server", "pipeline tool", "MCP server"],
+    "contexts": ["MCP tool surface", "IDE integration", "pipeline as tool"],
+    "autoLoad": false,
+    "requiredFor": ["MCP pipeline tool surface"]
+  },
+  "modes": ["Stdio"],
+  "logTags": ["#module", "#mcp"],
+  "documentation": {
+    "quickstart": "Start server: node modules/baml-pipelines-mcp/dist/server.js. Requires BAML_PIPELINES_REGISTRY_PATH and BAML_MODULE_ROOT env vars.",
+    "integration": "Wraps baml-openrouter pipelines as MCP tools; configure in your IDE's MCP settings"
+  },
+  "metadata": {
+    "requiresReflexiveNote": false,
+    "requiresEnvVar": "OPENROUTER_API_KEY",
+    "transport": "stdio",
+    "entrypoint": "dist/server.js"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "chroma",
+  "fullName": "Semantic Chroma-Key Analysis Engine",
+  "version": "2025.11.06-alpha",
+  "type": "module",
+  "primaryFile": "semantic-chroma-engine.md",
+  "description": "Semantic chroma-key analysis for isolating and compositing meaning layers in discourse",
+  "maintainer": "Forge Codex",
+  "dependencies": [
+    "core/cognition/cognitive-functions.md",
+    "modules/maven/memetic-anti-retroviral.md"
+  ],
+  "triggers": {
+    "keywords": ["metaphor", "semantic", "chroma", "compositing", "layered meaning", "symbolic", "allegory"],
+    "contexts": ["metaphor-heavy discourse", "semantic analysis", "symbolic reasoning", "layered text"],
+    "autoLoad": false,
+    "requiredFor": ["semantic compositing", "metaphor analysis"]
+  },
+  "modes": ["Isolation", "Compositing", "Keying", "Analysis"],
+  "logTags": ["#module", "#chroma"],
+  "documentation": {
+    "quickstart": "Load when discourse contains heavy metaphor or layered symbolic content requiring semantic decomposition",
+    "integration": "Load after MAVEN; pairs with exegesis-engine for discourse work"
+  },
+  "metadata": {
+    "requiresReflexiveNote": false
+  }
+}

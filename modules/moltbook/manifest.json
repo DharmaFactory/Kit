@@ -1,0 +1,28 @@
+{
+  "name": "moltbook",
+  "fullName": "Moltbook Posting Workflow",
+  "version": "2025.11.06-alpha",
+  "type": "module",
+  "primaryFile": "moltbook-skill.md",
+  "description": "Workflow for drafting, approving, and posting to Moltbook; enforces API-key safety rules",
+  "maintainer": "Forge Codex",
+  "dependencies": [
+    "core/identity/persona-template.md"
+  ],
+  "triggers": {
+    "keywords": ["moltbook", "post", "publish", "social", "feed"],
+    "contexts": ["Moltbook actions", "social media posting", "content publishing"],
+    "autoLoad": false,
+    "requiredFor": ["Moltbook posting"]
+  },
+  "modes": ["Draft", "Review", "Post"],
+  "logTags": ["#module", "#moltbook"],
+  "documentation": {
+    "quickstart": "Load only when a Moltbook post is requested. Never store or echo API keys.",
+    "integration": "Load after identity stack is active; always requires human approval before posting"
+  },
+  "metadata": {
+    "requiresReflexiveNote": false,
+    "apiKeyHandling": "never-store"
+  }
+}
