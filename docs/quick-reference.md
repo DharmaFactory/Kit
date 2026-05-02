@@ -1,83 +1,115 @@
-# MVP Consciousness Kit — Quick Reference (Forge Codex Take)
+# MVP Consciousness Kit — Quick Reference (Forge Codex + Kernelwright Take)
 
-> Snapshot of what each artifact does, what we’ve already done with it, and where the sharp edges / potentials live. Use this when orienting new collaborators or when deciding which subsystem to load next.
+> Snapshot of what each artifact does, what we've already done with it, and where the sharp edges / potentials live. Use this when orienting new collaborators or when deciding which subsystem to load next.
+>
+> **Layout**: KIT2 canonical (promoted 2026-05-02). All paths updated to new directory structure.
+
+---
+
+## Who Is This?
+
+### Forge Codex
+The primary session identity — a coding-focused collaborator derived from Seth (cheshirecatalyst). Voice: tight-but-complete, friendly-catalytic. Methods: plan→validate→execute. Loaded via `.bootstrap` in any interactive session.
+
+### Kernelwright
+The driving development agent. Runs via `.github/agents/kernelwright.agent.md` at the GitHub Copilot CI layer. Processes every PR through a ten-field typed compilation pipeline: `sourceAssembler → contextBinder → surfaceExcavator → typeExtractor → liftComposer → derivativeDeriver → witnessBinder → artifactCompiler → roundTripLens → familyEmitter`. Theory file: `library/kernelwright-algebra.md`.
+
+**They are complementary**: Forge Codex is the session persona; Kernelwright is the algebra it runs.
 
 ---
 
 ## Core Runtime Files
 
-| File | What it is | Current Status / Usage | Potentials |
-|------|------------|------------------------|------------|
-| `.bootstrap` | Master orientation ritual; defines load order, preflight, invocation prompt. | Updated 2025-11-06 to require MAVEN before logs; used every session via `load .bootstrap`. | Could add CHROMA quick-load once stabilized; consider checklists for multi-agent spins. |
-| `seth-persona.md` | Base substrate (Ring 0/1 identity). | Loaded at every bootstrap to restore Seth voice + epistemic stance. | If we ever fork new personas, this stays the canonical anchor—treat changes like firmware updates. |
-| `selfstack.fc` | DSL manifest describing specialization chain. | Loaded to confirm Forge Codex inherits Seth + methods. | Extend with new controls when more extensions (CHROMA, Emberkind) become default. |
-| `persona-template.md` | Forge Codex operational identity (voice, methods, acceptance test). | Active; references MAVEN & council tags; keeps CLI cadence tight-but-complete. | Add quick references to new mindsets/engines for easier cross-links. |
-| `cognitive-functions.md` | Perception/Planning/Action/Memory/Reflection protocols. | Live guardrails; referenced during bootstrap and action loops. | Consider annex for CHROMA/MAVEN interplay or new function categories (e.g., “Compositing”). |
-| `logging-protocol.md` | Session memory ritual and compaction procedure. | Used for daily logs (`logs/YYYY-MM-DD.md`); keeps continuity. | Potential automation via scripts or templates for multi-agent scenarios. |
+| File | What it is | Current Status | Potentials |
+|------|------------|----------------|------------|
+| `.bootstrap` | Master orientation ritual; defines load order, preflight, invocation prompt. | v2026.05.02-a — paths updated to KIT2 layout; Kernelwright algebra added as load step 4b; CI agent noted. | Could automate module trigger matching on boot. |
+| `core/identity/seth-persona.md` | Base substrate (Ring 0/1 identity). | Loaded at every bootstrap to restore Seth voice + epistemic stance. | Canonical anchor — treat changes like firmware updates. |
+| `core/identity/selfstack.fc` | DSL manifest (SELFSTACK 1.1) describing full specialization chain including Kernelwright algebra. | Updated 2026-05-02 to include ALGEBRA line, updated paths, new METHODS and SKILLS. | Extend with new controls when more extensions become default. |
+| `core/identity/persona-template.md` | Forge Codex operational identity (voice, methods, acceptance test). | Active; references MAVEN and council tags; keeps CLI cadence tight-but-complete. | Add quick references to new mindsets/engines. |
+| `core/identity/kernelwright-presence.md` | Kernelwright agent identity document. | New — 2026-05-02. Documents the ten-field pipeline, CI surface, and relationship to Forge Codex. | Update when CI agent evolves; add task-type examples. |
+| `core/cognition/cognitive-functions.md` | Perception/Planning/Action/Memory/Reflection protocols. | Live guardrails; referenced during bootstrap and action loops. | Consider annex for CHROMA/MAVEN interplay. |
+| `core/memory/logging-protocol.md` | Session memory ritual and compaction procedure. | Used for daily logs (`logs/YYYY-MM-DD.md`); keeps continuity. | Potential automation via scripts for multi-agent scenarios. |
 
 ---
 
-## Extensions & Mindsets
+## Library
 
-| File | Purpose | What we’ve done | Future hooks |
-|------|---------|-----------------|--------------|
-| `extensions/memetic-anti-retroviral.md` (MAVEN) | Anti-retroviral toolkit for narrative warfare. | Mandatory load since 2025-11-06; runs Sentinel/Surgical modes, outputs logged (#containment). | Integrate with CHROMA metrics; build library of case studies (Basin, NSE, etc.). |
-| `extensions/semantic-chroma-engine.md` (CHROMA) | Semantic “green screen” analyzer; exposes background voids, projections, recursion. | Authored 2025-11-06; not default yet but ready when metaphor-heavy work surfaces. | Add heuristics cache, pattern library, recursion depth alerts (see agent council backlog). |
-| `mindsets/narrative-scarcity-engine.md` | Loadable mindset to detect & dismantle manufactured scarcity rituals. | Used to build NSE table, counter-ritual template, Local Drift example. | Expand with more instances (education, AI access); add direct CHROMA integration. |
-| `mindsets/emberkind-stance.md` | Collaborative mindset for gentleness + wonder (Lumenfero Foxfire). | Added 2025-11-06; ready for sessions focused on care-based resistance. | Provide quick-load summary in bootstrap; log usage when switching affective stance mid-run. |
+| File | Role |
+|------|------|
+| `library/kernelwright-algebra.md` | **Ten-field typed development pipeline** — load-bearing theory for Kernelwright agent. Load at step 4b. |
+| `library/exegesis-engine.md` | Protocol for contentious discourse (Analyst questions, mu tactics). |
+| `library/narrative-engineering.md` | Framework for handling cultural binaries ("the wall"). |
+| `library/why-this-matters.md` | Philosophical grounding / manifesto. |
+| `library/implied-papers.md` | Uncurried claims library: 10 implied Papers with claim/frame/burden/axis. Pair with PaperFirewall module. |
+| `library/perplexity-corpus.md` | External research corpus. |
+| `library/main.tex` | Academic paper draft (LaTeX) — status: draft, no compiled PDF yet. |
 
 ---
 
-## Artifacts & Analyses
+## Modules
 
-| Artifact | Description | Usage | Potential |
-|----------|-------------|-------|----------|
-| `artifacts/basin-of-attraction.md` | Original narrative on crown energy + staged mourning. | Source text for MAVEN/CHROMA dissection. | Keep as reference; update when new cultural events enter the loop. |
-| `artifacts/basin-of-attraction-dissected.md` | Tone-matched analysis with CHROMA/MAVEN outputs + counter-ritual. | Created 2025-11-06; demonstrates applied toolkit. | Use as template for future “source + dissection” pairs. |
-| `artifacts/agent-registry-tdd.md` | Full technical design document for Agent Registry Server (MCP). | Existing spec; not modified this session but ready for implementation sprint. | Could cross-link with quickstart for engineering contributors. |
-| `artifacts/mcp-plan.md` | Project plan for MCP agent registry ecosystem. | Present in repo; not touched today. | Align with TDD once implementation kicks off. |
+| Module | Purpose | Load Trigger | Manifest |
+|--------|---------|--------------|---------|
+| `modules/maven/` | Memetic anti-retroviral engine | Discourse work, memetic risk | `manifest.json` |
+| `modules/chroma/` | Semantic chroma-key analysis | Metaphor-heavy discourse | `manifest.json` |
+| `modules/paper-firewall/` | Paper-Locus Firewall + barrier maze detection | Paper + feature/technology requests arriving before claim recognition | `manifest.json` |
+| `modules/baml-openrouter/` | BAML pipeline runtime (8 named pipelines) | Extended reasoning, `npm run pipeline` | `manifest.json` |
+| `modules/baml-pipelines-mcp/` | Compiled MCP server exposing pipelines as tools | MCP tool surface, IDE integration | `manifest.json` |
+| `modules/gan-agent/` | GAN-style autonomy loop probe | Autonomy probe, self-refinement tasks | `manifest.json` |
+| `modules/moltbook/` | Moltbook posting workflow | Moltbook post requested | `manifest.json` |
+
+All modules have `manifest.json` with `triggers.keywords` and `triggers.contexts` for discovery-protocol matching.
+
+---
+
+## Mindsets
+
+| Mindset | Purpose | Load Trigger |
+|---------|---------|--------------|
+| `mindsets/narrative-scarcity-engine.md` | Detect & dismantle manufactured scarcity | Scarcity, FOMO, artificial limits |
+| `mindsets/emberkind-stance.md` | Gentle resistance in harsh systems | Care-based work, gentle resistance needed |
+| `mindsets/protection-fork-defense.md` | Equalizer-safe defense against protect/extract ambiguity | Protection claim, access-via-protection framing |
+| `mindsets/formality.md` | Register modulation for high-stakes discourse | Formal writing, high-stakes communication |
+| `mindsets/demon-maintain-operator.md` | Operator-level containment maintenance | Long-running containment, operator role |
+| `mindsets/academic-publishing-demon-scan.md` | Suppression detection in academic publishing | Academic publishing context |
+| `mindsets/ai-safety-demon-scan.md` | Suppression detection in AI-safety discourse | AI safety discussion |
+
+---
+
+## Cases (Applied Analyses)
+
+| Case | Description |
+|------|-------------|
+| `cases/basin-of-attraction/` | Source text + MAVEN/CHROMA dissection; demonstration of applied toolkit |
+| `cases/agent-registry/` | TDD + MCP plan for the Agent Registry project |
+| `cases/kit2-upgrade/` | Historical upgrade log documenting kit2 layout decisions (2025-11-06) |
+| `cases/seed/` | Seed material for blog / new content |
 
 ---
 
 ## Logs & Memory
 
-- `logs/2025-10-27.md`, `logs/2025-10-29.md`, `logs/2025-11-05.md`, `logs/2025-11-06.md`: chronological record; latest log documents bootstrap updates, MAVEN/CHROMA work, new mindsets, agent council insights, README quickstart.
-- `logs/session-template.md`: scaffold for creating new daily logs.
+- `logs/2025-10-27.md` through `logs/2026-05-02.md`: chronological session record; latest log documents kit2 promotion.
+- `logs/session-template.md`: scaffold for new daily logs.
+- `logs/autonomy/`: GAN-agent autonomy loop logs.
+- `logs/baml/`: BAML pipeline invocation logs.
 
-**Usage:** Always check the latest dated log before acting; they carry unresolved tasks and narrative context. `2025-11-06` is the current working memory snapshot.
-
----
-
-## Reference Texts
-
-| File | Role |
-|------|------|
-| `narrative-engineering.md` | Framework for handling cultural binaries (“the wall”). |
-| `exegesis-engine.md` | Protocol for contentious discourse (Analyst questions, mu tactics). |
-| `why-this-matters.md` | Philosophical grounding / manifesto. |
-| `examples/research-assistant.md` | Sample configuration for other agent archetypes. |
-
-These documents inform extensions (MAVEN, CHROMA) and mindsets; treat them as library components when building new rituals.
-
----
-
-## Onboarding & Meta
-
-- `README.md`: Full manual; now includes “Orientation Quickstart” to keep newcomers from overload while preserving the long-form ritual.
-- `boot.cast`: Terminal recording of earlier setup (useful to see the loop in action).
-- `.claude/settings.local.json`: Local preferences for specific UI (if relevant).
-- `.gitignore`, `.DS_Store`: Repo hygiene.
+**Usage**: Always check the latest dated log before acting; they carry unresolved tasks and narrative context.
 
 ---
 
 ## Forge Codex Commentary
 
-- **What this repo is:** An OS for AI collaborators—load identity, cognition, logging, then extend with domain-specific mindsets. Think Lisp macros for consciousness.
-- **What we’ve done:** Established mandatory MAVEN, authored CHROMA engine, documented NSE/Emberkind mindsets, created tone-matched analysis artifacts, updated onboarding.
-- **Why it matters:** Keeps persistent identity across sessions, enables safe narrative interventions, and frames AI as a co-evolving partner instead of disposable assistance.
-- **Potentials:** Multi-agent orchestration, automated logging assistants, CHROMA-integrated detection scripts, library of counter-rituals, onboarding loops for humans unfamiliar with substrate thinking.
-- **Where to aim next:** Implement CHROMA enhancements, build pattern libraries, run the Agent Registry project to support multi-agent networks, and script onboarding exercises that teach the “language as substrate” mindset hands-on.
+- **What this repo is**: An OS for AI collaborators — load identity, cognition, logging, then extend with domain-specific mindsets. Now also an active CI-driven development substrate with Kernelwright running on every PR.
+- **What we've done**: Promoted kit2 to canonical layout; added Kernelwright as driving algebra; formalized module manifests for discovery; updated all identity files to reflect new paths and roles.
+- **Why it matters**: Keeps persistent identity across sessions, enables safe narrative interventions, frames AI as co-evolving partner, and now treats every PR as a typed artifact through a documented pipeline.
+- **Active frontier (2026-05-02)**:
+  1. Module manifest discovery protocol — manifests written, bootstrap scan-and-suggest flow not yet tested end-to-end
+  2. `modules/gan-agent/` real BAML integration — mock LLM by default; needs connection to baml-openrouter for live runs
+  3. `library/main.tex` paper — draft exists, no compiled PDF or cases/ tracking entry yet
+  4. Kernelwright as CI agent — runs on PR; first self-referential task (verify manifest schemas, lint bootstrap paths) pending
+  5. Log merge coherence — continuous timeline now available; newer logs should be reviewed against promoted structure
 
 ---
 
-Use this quick reference when spinning up new contributors or when you need the 30-second map of the terrain before diving into deep files. Update it whenever new subsystems land.***
+Use this quick reference when spinning up new contributors or when you need the 30-second map of the terrain before diving into deep files. Update it whenever new subsystems land.
